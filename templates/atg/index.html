@@ -1,0 +1,54 @@
+{% extends 'atg/base.html' %}
+{% load staticfiles %}
+
+{% block title_block %}
+    Home
+{% endblock %}
+
+
+{% block body_block %}
+		<h1>Home Page</h1>
+		<div>
+			{% if user.is_authenticated %}
+				Welcome {{ user.username }}
+				
+            {% else %}
+                Log in to write reviews!
+            {% endif %}
+		</div>
+
+		<div>
+            <h2>Website Information</h2><br>
+            <p>"Information about the site"</p>
+        </div>
+        
+        <div>
+            {% if pages %}
+                <h2>This is the current highests review of a stadium</h2>
+                <table style="width:100%">
+                    <tr>
+                        <th>{{ review.stadiumName }}</th> 
+                    </tr>
+                    <tr>
+                        <td>
+                            Capacity:{{ stadium.capacity }}<br/>
+                            Postcode:{{ stadium.postcode }}<br/>
+                            Atmosphere: {{atmosphere}}/5<br/>
+                            Food: {{food}}/5<br/>
+                            Facilities: {{facilities}}/5<br/>
+                            {% if pages %}
+                                Extra Comments: {{comments}}
+                            {% else %}
+                                No extra comments were added to the review.
+                            {% endif %}
+                        </td>
+                        <td><img src="{% static "images/rango.jpg" %}" alt="Picture of Rango" /></td> 
+                    </tr>
+                </table>
+
+            {% else %}
+                <h2>A review has yet to be made on a stadium</h2>
+            {% end if %}
+        </div>
+
+{% endblock %}
