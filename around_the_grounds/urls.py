@@ -15,7 +15,18 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
+from django.conf.urls import include
+from ATGApp import views
 
 urlpatterns = [
+
+    url(r'^$', views.index, name='index'),
+
+    url(r'^ATGApp/', include('ATGApp.urls')),
+    # above maps any URLs starting
+    # with ATGAPP/ to be handled by
+    # the ATGApp application
+
     url(r'^admin/', admin.site.urls),
+
 ]

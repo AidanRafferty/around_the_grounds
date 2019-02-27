@@ -15,9 +15,22 @@ import os
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
+TEMPLATE_DIR = os.path.join(BASE_DIR, 'templates')
+
+# This will provide an absolute path to the location where static files are kept
+# by using the same process to join the path as above
+STATIC_DIR = os.path.join(BASE_DIR, 'static')
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
+
+
+
+
+
+# This is a list of paths with which Django can expect to find static files in
+# that can be served.
+STATICFILES_DIRS = [STATIC_DIR, ]
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'j9(r96q()yk1^5p+x!cyp7e(rx_tigg7j3kqhr!djf49cs7nq3'
@@ -37,6 +50,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'ATGApp',
 ]
 
 MIDDLEWARE = [
@@ -54,7 +68,7 @@ ROOT_URLCONF = 'around_the_grounds.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [TEMPLATE_DIR, ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -118,3 +132,12 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
+print("BASE", BASE_DIR)
+print("Templates", TEMPLATE_DIR)
+print("STATIC", STATIC_DIR)
+
+#print(__file__)
+#print(os.path.dirname(__file__))
+#print(os.path.dirname(os.path.dirname(__file__)))
+
+
