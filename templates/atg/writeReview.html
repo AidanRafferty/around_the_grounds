@@ -1,0 +1,52 @@
+{% extends "atg/base.html" %}
+{% load staticfiles %}
+
+{% block title_block %}
+    Write Review
+{% endblock %}
+
+{% block body_block %}
+    <h1>Write a Review for: {{stadium.stadiumName}}</h1>
+
+    <form id="Review_form" method="post" action="{% url 'writeReview'%}">
+        {% csrf_token %}
+        <table>
+            <tr>
+                <th>Atmosphere</th>
+                <th>Food</th>
+                <th>Facilities</th>
+            </tr>
+            <tr>
+                <td><input type="radio" name="Atmosphere" value="1">Very Poor<br></td>
+                <td><input type="radio" name="Food" value="1">Very Poor<br></td>
+                <td><input type="radio" name="Facilities" value="1">Very Poor<br></td>
+            </tr>
+            <tr>
+                <td><input type="radio" name="Atmosphere" value="2">Poor<br></td>
+                <td><input type="radio" name="Food" value="2">Poor<br></td>
+                <td><input type="radio" name="Facilities" value="2">Poor<br></td>
+            </tr>
+            <tr>
+                <td><input type="radio" name="Atmosphere" value="3">Average<br></td>
+                <td><input type="radio" name="Food" value="3">Average<br></td>
+                <td><input type="radio" name="Facilities" value="3">Average<br></td>
+            </tr>
+            <tr>
+                <td><input type="radio" name="Atmosphere" value="4">Good<br></td>
+                <td><input type="radio" name="Food" value="4">Good<br></td>
+                <td><input type="radio" name="Facilities" value="4">Good<br></td>
+            </tr>
+            <tr>
+                <td><input type="radio" name="Atmosphere" value="5">Very Good<br></td>
+                <td><input type="radio" name="Food" value="5">Very Good<br></td>
+                <td><input type="radio" name="Facilities" value="5">Very Good<br></td>
+            </tr>
+        </table>
+        <br/>
+        Please leave any other comments about your visit: (MAX 200 characters)<br/>
+        Eg. How you got to the stadium, Helpfulness of staff, Availability of parking.<br/>
+        <textarea name="message" rows="4" cols="40">(MAX 200 characters)</textarea>
+        <br>
+        <input type="submit" value="Submit Review"/>
+    </form>
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends "atg/base.html" %}
+{% load staticfiles %}
+
+{% block title_block %}
+    Add Stadium
+{% endblock %}
+
+{% block body_block %}
+    <h1>Add Stadium</h1>
+
+    <form id="login_form" method="post" action="{% url 'login'%}">
+        {% csrf_token %}
+        Stadium Name: <input type="text" name="stadiumName" value="" size="50"/>
+        <br/>
+        Postcode: <input type="text" name="postcode" value="" size="10"/>
+        <br/>
+        Capacity: <input type="number" name="capacity" min="0" max="114000"/>
+        <input type="submit" value="submit"/>
+        Picture of the stadium: <input type="file" name="stadiumPic" accept="image/png, image/jpeg">
+    </form>
+{% endblock %}
