@@ -13,6 +13,15 @@ def index(request):
     response = render(request,'atg/index.html',context = context_dict)
     return response
 
+def stadiums(request):
+    return render(request, 'atg/stadiums.html', context = context_dict)
+
+def login(request):
+    return render(request, 'atg/login.html', context=context_dict)
+
+def register(request):
+    return render(request, 'atg/register.html', context=context_dict)
+
 
 
 

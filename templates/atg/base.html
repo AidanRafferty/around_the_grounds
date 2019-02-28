@@ -22,7 +22,7 @@
 
         <div>
             {% block sidebar_block %}
-                {% get_category_list category %}
+                {% get_stadium_list %}
             {% endblock %}
         </div>
 
@@ -31,7 +31,7 @@
         <div>
             <ul>
                 <li><a href="{% url 'index' %}">Home Page</a></li>
-                <li><a href="{% url 'stadia' %}">Stadia</a></li>
+                <li><a href="{% url 'stadiums' %}">Stadiums</a></li>
                 {% if user.is_authenticated %}
                     <li><a href="{% url 'account' %}">My Account</a></li>
                 {% else %}
