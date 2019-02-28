@@ -7,7 +7,7 @@ from ATGApp.models import UserProfile, Stadium, Review
 
 class StadiumAdmin(admin.ModelAdmin):
 
-    prepopulated_fields = {'slug':('name', )}
+    prepopulated_fields = {'slug': ('name', )}
 
 
 admin.site.register(UserProfile)
