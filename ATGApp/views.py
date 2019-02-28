@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from atg.forms import Review
+from ATGApp.forms import Review
 # Create your views here.
 
 
