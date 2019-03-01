@@ -10,17 +10,17 @@ def index(request):
     
     highestRatedStadium = Review.objects.order_by('-totalScore')[:1]
     context_dict = {'highestRatedStadium' : highestRatedStadium}
-    response = render(request,'atg/index.html',context = context_dict)
+    response = render(request,'ATGApp/index.html',context = context_dict)
     return response
 
 def stadiums(request):
-    return render(request, 'atg/stadiums.html', context = context_dict)
+    return render(request, 'ATGApp/stadiums.html', context = context_dict)
 
 def login(request):
-    return render(request, 'atg/login.html', context=context_dict)
+    return render(request, 'ATGApp/login.html', context=context_dict)
 
 def register(request):
-    return render(request, 'atg/register.html', context=context_dict)
+    return render(request, 'ATGApp/register.html', context=context_dict)
 
 
 
