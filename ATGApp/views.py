@@ -7,7 +7,7 @@ from ATGApp.models import Review
 def index(request):
     #Returns information on highest rated stadium
     #Returns picture of highest rated stadium
-    
+
     highestRatedStadium = Review.objects.order_by('-totalScore')[:1]
     context_dict = {'highestRatedStadium' : highestRatedStadium}
     response = render(request,'ATGApp/index.html',context = context_dict)
@@ -22,6 +22,9 @@ def login(request):
 def register(request):
     return render(request, 'ATGApp/register.html', context=context_dict)
 
+def account(request):
+
+    return render(request,'ATGApp/myAccount.html', context=context_dict)
 
 
 

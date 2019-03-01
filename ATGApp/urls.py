@@ -8,5 +8,6 @@ urlpatterns = [
     url(r'^stadiums/$', views.stadiums, name='stadiums'),
     url(r'^login/$', views.login, name='login'),
     url(r'^register/$', views.register, name='register'),
+    url(r'^account/$', views.account, name='account'),
 
 ]
