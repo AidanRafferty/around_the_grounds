@@ -9,6 +9,9 @@ class StadiumAdmin(admin.ModelAdmin):
 
     prepopulated_fields = {'slug': ('name', )}
 
+class ReviewAdmin(admin.ModelAdmin):
+
+    prepopulated_fields = {}
 
 admin.site.register(UserProfile)
 admin.site.register(Review)
