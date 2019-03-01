@@ -39,9 +39,12 @@ class Stadium(models.Model):
     TotalScore = models.IntegerField(default=0)
     ReviewCount = models.IntegerField(default=0)
 
-    def save(self,*args, **kwargs):
+    def save(self,totalScore,*args, **kwargs):
 
         self.slug = slugify(self.name)
+        self.ReviewCount += 1
+        self.TotalScore += totalScore
+        
         super(Stadium, self).save(*args, **kwargs)
 
     class Meta:
@@ -50,6 +53,8 @@ class Stadium(models.Model):
     def __str__(self):
         return self.name
 
+    def __repr__(self):
+        return self.name 
 
 class Review(models.Model):
     user = models.ForeignKey(UserProfile)
@@ -64,17 +69,17 @@ class Review(models.Model):
 
     def save(self, *args, **kwargs):
         self.totalScore = self.atmosphere + self.food + self.facilities
-        self.stadium.TotalScore += self.totalScore
-        self.stadium.ReviewCount += 1
-        
-        # retrieve the stadium object the review is related to and update it
-        relatedStad = Stadium.objects.get(stadium)
-
+        #Calls the save() function of the current stadium to increment the
+        #ReviewTotal by 1 and to add the TotalScore of this review to the TotalScore for the stadium
+        Stadium.save(self.stadium,self.totalScore)
         super(Review, self).save(*args, **kwargs)
 
 
     def __str__(self):
         return str(self.id)
+    
+    def __repr__(self):
+        return str(self.id) 
 
 
 
