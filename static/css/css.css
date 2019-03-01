@@ -7,9 +7,22 @@ h1 {
     color: black;
     font-family: Arial, Helvetica, sans-serif;
     background-color: rgb(203, 255, 203);
-
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    float: left;
     }
   
+.status h3{
+    position: fixed;
+    right: -50%;
+    top:-30px;
+    width:100%;
+    z-index:+1;
+}
   
   /* Menu Bar */
  .menu ul {
@@ -17,9 +30,9 @@ h1 {
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color:black;
+    background-color:#333;
     position: fixed;
-    top: 40;
+    top: 36.5px;
     width: 100%;
     }
 .menu li {
@@ -31,12 +44,9 @@ h1 {
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
-    background-color: black;
+    background-color: #333;
 
     }
-.menu li a:hover:not(.active) {
+.menu li a:hover {
     background-color: black;
     }
-.active {
-    background-color: #4CAF50;
-    } 

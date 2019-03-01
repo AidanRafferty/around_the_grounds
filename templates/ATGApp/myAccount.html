@@ -5,17 +5,8 @@
     Home
 {% endblock %}
 
-
 {% block body_block %}
-		<h1>Home Page</h1>
-		<div>
-			{% if user.is_authenticated %}
-				Welcome {{ user.username }}
-				
-            {% else %}
-                Log in to write reviews!
-            {% endif %}
-		</div>
+		<h1>My Account</h1>
 
 		<div>
             <h2>Website Information</h2><br>
