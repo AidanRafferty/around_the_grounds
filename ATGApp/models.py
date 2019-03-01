@@ -1,7 +1,7 @@
-from django.db import models
-from django.template.defaultfilters import slugify
 from django.contrib.auth.models import User
+from django.db import models
 from django.db.models import Sum
+from django.template.defaultfilters import slugify
 
 # In order to get the highest rated stadium, use an sql query count total score
 # then group by stadium which will show the stadium object and the total score across all reviews
@@ -57,26 +57,29 @@ class Stadium(models.Model):
         return self.name 
 
 class Review(models.Model):
-    user = models.ForeignKey(UserProfile)
-    stadium = models.ForeignKey(Stadium)
-    id = models.AutoField(primary_key=True)
+    id = models.AutoField(primary_key=True) 
     atmosphere = models.IntegerField()
     food = models.IntegerField()
     facilities = models.IntegerField()
     additionalInfo = models.CharField(max_length = 200)
     date = models.DateTimeField(auto_now=True)
     totalScore = models.IntegerField(blank = True)
+    user = models.ForeignKey(UserProfile)
+    stadium = models.ForeignKey(Stadium)
 
     def save(self, *args, **kwargs):
         self.totalScore = self.atmosphere + self.food + self.facilities
+<<<<<<< HEAD
         #Calls the save() function of the current stadium to increment the
         #ReviewTotal by 1 and to add the TotalScore of this review to the TotalScore for the stadium
         Stadium.save(self.stadium,self.totalScore)
+=======
+>>>>>>> 70b2ab47c28cfdb1520a1a13490f056235b2c51d
         super(Review, self).save(*args, **kwargs)
-
 
     def __str__(self):
         return str(self.id)
+<<<<<<< HEAD
     
     def __repr__(self):
         return str(self.id) 
@@ -99,3 +102,5 @@ class Review(models.Model):
 
 
 
+=======
+>>>>>>> 70b2ab47c28cfdb1520a1a13490f056235b2c51d
