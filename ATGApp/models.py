@@ -1,7 +1,7 @@
-from django.db import models
-from django.template.defaultfilters import slugify
 from django.contrib.auth.models import User
+from django.db import models
 from django.db.models import Sum
+from django.template.defaultfilters import slugify
 
 # In order to get the highest rated stadium, use an sql query count total score
 # then group by stadium which will show the stadium object and the total score across all reviews
@@ -68,22 +68,3 @@ class Review(models.Model):
 
     def __str__(self):
         return str(self.id)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
