@@ -1,7 +1,15 @@
-body {
+body:not(.menu) {
     background-color: rgb(203, 255, 203);
     margin:0;
+    margin-left:1%;
+    margin-right:1%;
+    margin-bottom:1%;
+    margin-top:1%;
     }
+
+p {
+    margin-left:2%;
+}
   
 h1 {
     color: black;
@@ -19,7 +27,7 @@ h1 {
 .status h3{
     position: fixed;
     right: -50%;
-    top:-30px;
+    top:-10px;
     width:100%;
     z-index:+1;
 }
@@ -27,7 +35,7 @@ h1 {
   /* Menu Bar */
  .menu ul {
     list-style-type: none;
-    margin: 0;
+    margin: 0%;
     padding: 0;
     overflow: hidden;
     background-color:#333;
@@ -49,4 +57,5 @@ h1 {
     }
 .menu li a:hover {
     background-color: black;
+    color: rgb(203, 255, 203);
     }
