@@ -23,7 +23,6 @@ def register(request):
     return render(request, 'ATGApp/register.html', context=context_dict)
 
 def account(request):
-
     return render(request,'ATGApp/myAccount.html', context=context_dict)
 
 
