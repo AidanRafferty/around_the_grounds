@@ -52,26 +52,19 @@ class Stadium(models.Model):
 
 
 class Review(models.Model):
-    user = models.ForeignKey(UserProfile)
-    stadium = models.ForeignKey(Stadium)
-    id = models.AutoField(primary_key=True)
+    id = models.AutoField(primary_key=True) 
     atmosphere = models.IntegerField()
     food = models.IntegerField()
     facilities = models.IntegerField()
     additionalInfo = models.CharField(max_length = 200)
     date = models.DateTimeField(auto_now=True)
     totalScore = models.IntegerField(blank = True)
+    user = models.ForeignKey(UserProfile)
+    stadium = models.ForeignKey(Stadium)
 
     def save(self, *args, **kwargs):
         self.totalScore = self.atmosphere + self.food + self.facilities
-        self.stadium.TotalScore += self.totalScore
-        self.stadium.ReviewCount += 1
-        
-        # retrieve the stadium object the review is related to and update it
-        relatedStad = Stadium.objects.get(stadium)
-
         super(Review, self).save(*args, **kwargs)
-
 
     def __str__(self):
         return str(self.id)
