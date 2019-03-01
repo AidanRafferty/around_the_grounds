@@ -5,40 +5,43 @@
 <html>
     <head >
         <meta charset="UTF-8"/>
-        <link rel="stylesheet" type="text/css" href="css.css">
+        <link rel="stylesheet" href="{% static 'css/css.css' %}">
         <title>
             Around The Grounds -
             {% block title_block %}
-                Around The Grounds -
             {% endblock %}
         </title>
     </head>
 
     <body>
-        <div>
-            {% block body_block %}
-            {% endblock %}
-        </div>
-
-        <div>
-            {% block sidebar_block %}
-                {% get_stadium_list %}
-            {% endblock %}
-        </div>
-
-        <hr/>
-
-        <div>
+        <div class="menu">
             <ul>
                 <li><a href="{% url 'index' %}">Home Page</a></li>
                 <li><a href="{% url 'stadiums' %}">Stadiums</a></li>
                 {% if user.is_authenticated %}
                     <li><a href="{% url 'account' %}">My Account</a></li>
                 {% else %}
-                    <li><a href="{% url 'login' %}">Sign In</a></li>
+                    <li><a href="{% url 'login' %}">Login</a></li>
                     <li><a href="{% url 'register' %}">Sign Up</a></li>
                 {% endif %}
+            </ul>
+        </div>  
 
+        <div>
+            {% block body_block %}
+            {% endblock %}
+        </div>
+
+        <hr/>
+
+        <div>
+            This Page was Created for WAD2 project by:
+            <ul>
+                <li>Gabriel Georgiev</li>
+                <li>Jack McKechnie</li>
+                <li>Aidan Rafferty</li>
+                <li>Robbie Thomson</li>
+                
             </ul>
         </div>
     </body>
