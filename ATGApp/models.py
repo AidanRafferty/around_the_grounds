@@ -39,11 +39,9 @@ class Stadium(models.Model):
     TotalScore = models.IntegerField(default=0)
     ReviewCount = models.IntegerField(default=0)
 
-    def save(self,totalScore,*args, **kwargs):
+    def save(self,*args, **kwargs):
         
         self.slug = slugify(self.name)
-        self.ReviewCount += 1
-        self.TotalScore += totalScore
             
         super(Stadium, self).save(*args, **kwargs)
      
@@ -71,13 +69,8 @@ class Review(models.Model):
 
     def save(self, *args, **kwargs):
         self.totalScore = self.atmosphere + self.food + self.facilities
-        self.slug = slugify(self.id)
 
-        #Calls the save() function of the current stadium to increment the
-        #ReviewTotal by 1 and to add the TotalScore of this review to the TotalScore for the stadium
-        Stadium.save(self.stadium,self.totalScore)
-
-
+            
         super(Review, self).save(*args, **kwargs)
 
     def __str__(self):
