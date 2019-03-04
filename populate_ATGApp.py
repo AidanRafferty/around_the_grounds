@@ -23,6 +23,15 @@ def generate_user():
     p2 = UserProfile.objects.create(user=new_user2)
     p2.save()
 
+    new_user3 = User.objects.get_or_create(username = "LiverpoolFan")[0]
+    new_user3.first_name="Craig"
+    new_user3.last_name="Gunn"
+    new_user3.save()
+    p3 = UserProfile.objects.create(user=new_user3)
+    p3.save()
+
+
+
 
     # then a dictionary of stadiums for the users to add 
     Old_Trafford_Reviews = [
@@ -82,7 +91,9 @@ def generate_user():
             add_review(s, p, review["atmosphere"], review["food"], review["facilities"], review["additionalInfo"])
 
 
-
+    add_stadium("Anfield", 54074, "L4 OTH", 
+    "Anfield is the home of Liverpool Football club since 1892 and is the sixth largest football staium in England. The stadium was originally owned by Merseyside rivals Everton until a club dispute led to the Toffees moving to their current ground Goodison Park", 
+    "Liverpool FC", 0, 0, p3)
 
     
     for s in Stadium.objects.all():
@@ -120,7 +131,9 @@ def add_review(stadium, user, atmosphere, food, facilities, Info):
     review.additionalInfo = Info
 
     review.save()
+
     print(review)
+    
     return review
 
 
