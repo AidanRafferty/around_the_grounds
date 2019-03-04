@@ -14,16 +14,17 @@ def index(request):
     return response
 
 def stadiums(request):
+    context_dict = {}
     return render(request, 'ATGApp/stadiums.html', context = context_dict)
 
 def login(request):
-    return render(request, 'ATGApp/login.html', context=context_dict)
+    context_dict = {}
+    return render(request, 'ATGApp/login.html', context = context_dict)
 
 def register(request):
-    return render(request, 'ATGApp/register.html', context=context_dict)
+    context_dict = {}
+    return render(request, 'ATGApp/register.html', context = context_dict)
 
 def account(request):
-    return render(request,'ATGApp/myAccount.html', context=context_dict)
-
-
-
+    context_dict = {}
+    return render(request,'ATGApp/myAccount.html', context = context_dict)

@@ -9,12 +9,12 @@
     <h1>Register for Around the Grounds</h1>
 
     {% if registered %}
-        <strong>Thank you for registering! </strong><br/>
+        <h2>Thank you for registering!</h2><br/>
         <a href="{% url 'index' %}">Return to the homepage.</a><br/>
-        <p>Or go to the <a href="{% url 'index' %}">Stadia Page</a> to pick a stadium to write a review on.</p>
+        <p>Or go to the <a href="{% url 'index' %}">Stadium Page</a> to pick a stadium to write a review on.</p>
    
-        {% else %}
-        <strong>Register here!</strong><br />
+    {% else %}
+        <h2>Register for an account here!</h2>
         
         <form id="user_form" method="post" action="{% url 'register' %}" enctype="multipart/form-data">
             {% csrf_token %}
