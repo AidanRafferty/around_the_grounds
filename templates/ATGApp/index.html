@@ -3,6 +3,14 @@
 
 {% block title_block %}
     Home
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("button").click(function(){
+                $("#div1").load("demo_test.txt #p1");
+            });
+        });
+    </script>
 {% endblock %}
 
 {% block body_block %}
@@ -17,8 +25,12 @@
             <br/>However if you want to leave your own review on a stadium, you will need to register an account with the site.
         </p>
     </div>
-        
-    <div>
+      
+    <div id="div1"><h2>Let jQuery AJAX Change This Text</h2></div>
+
+    <button>Get External Content</button>
+
+    <!-- <div>
         {% if pages %}
             <h2>This is the current highests review of a stadium</h2>
             <table style="width:100%">
@@ -45,5 +57,5 @@
         {% else %}
             <h2>! A review has yet to be made on a stadium !</h2>
         {% endif %}
-    </div>
+    </div> -->
 {% endblock %}
