@@ -69,17 +69,16 @@ class Review(models.Model):
 
     def save(self, *args, **kwargs):
         self.totalScore = self.atmosphere + self.food + self.facilities
-<<<<<<< HEAD
+
         #Calls the save() function of the current stadium to increment the
         #ReviewTotal by 1 and to add the TotalScore of this review to the TotalScore for the stadium
         Stadium.save(self.stadium,self.totalScore)
-=======
->>>>>>> 70b2ab47c28cfdb1520a1a13490f056235b2c51d
+
         super(Review, self).save(*args, **kwargs)
 
     def __str__(self):
         return str(self.id)
-<<<<<<< HEAD
+
     
     def __repr__(self):
         return str(self.id) 
@@ -102,5 +101,3 @@ class Review(models.Model):
 
 
 
-=======
->>>>>>> 70b2ab47c28cfdb1520a1a13490f056235b2c51d
