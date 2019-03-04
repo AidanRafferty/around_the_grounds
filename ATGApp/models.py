@@ -39,8 +39,10 @@ class Stadium(models.Model):
     description = models.CharField(max_length=500)
     homeTeam = models.CharField(max_length=55)
     slug = models.SlugField(unique=True)
-    TotalScore = models.IntegerField(default=0)
     ReviewCount = models.IntegerField(default=0)
+    TotalScore = models.IntegerField(default=0)
+    averageScore = models.IntegerField(default=0)
+    
 
     def save(self,*args, **kwargs):
         
@@ -64,9 +66,12 @@ class Stadium(models.Model):
             # when the loop has completed assign the scores across all reviews to the total
             # score of the stadium 
             self.TotalScore = score
+        
+        self.averageScore = self.TotalScore//self.ReviewCount
 
 
-        self.slug = slugify(self.name)            
+        self.slug = slugify(self.name)         
+
         super(Stadium, self).save(*args, **kwargs)
      
         
@@ -90,6 +95,7 @@ class Review(models.Model):
     additionalInfo = models.CharField(max_length = 200)
     date = models.DateTimeField(auto_now=True)
     totalScore = models.IntegerField(blank = True)
+    
     
 
     def save(self, *args, **kwargs):

@@ -7,7 +7,7 @@ from ATGApp.models import UserProfile, Stadium, Review
 
 class StadiumAdmin(admin.ModelAdmin):
 
-    list_display = ('name', 'capacity', 'photo', 'homeTeam', 'TotalScore', 'ReviewCount', 'user')
+    list_display = ('name', 'capacity', 'photo', 'homeTeam','TotalScore', 'ReviewCount', 'averageScore' , 'user')
 
     prepopulated_fields = {'slug': ('name', )}
 
