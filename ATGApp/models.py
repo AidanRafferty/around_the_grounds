@@ -28,22 +28,20 @@ class UserProfile(models.Model):
 
 
 class Stadium(models.Model):
-    user = models.ForeignKey(UserProfile)
+    user = models.ForeignKey(UserProfile, on_delete = models.CASCADE)
     name = models.CharField(max_length=50, unique=True, primary_key=True)
-    photo = models.ImageField(upload_to='stadium_images')
-    capacity = models.IntegerField()
-    postcode = models.CharField(max_length=10)
+    photo = models.ImageField(upload_to='stadium_images', blank = True)
+    capacity = models.IntegerField(default = 0)
+    postcode = models.CharField(max_length=20)
     description = models.CharField(max_length=500)
     homeTeam = models.CharField(max_length=55)
     slug = models.SlugField(unique=True)
     TotalScore = models.IntegerField(default=0)
     ReviewCount = models.IntegerField(default=0)
 
-    def save(self,totalScore,*args, **kwargs):
+    def save(self,*args, **kwargs):
 
         self.slug = slugify(self.name)
-        self.ReviewCount += 1
-        self.TotalScore += totalScore
         
         super(Stadium, self).save(*args, **kwargs)
 
@@ -58,26 +56,29 @@ class Stadium(models.Model):
 
 class Review(models.Model):
     id = models.AutoField(primary_key=True) 
-    atmosphere = models.IntegerField()
-    food = models.IntegerField()
-    facilities = models.IntegerField()
+    atmosphere = models.IntegerField(default=0)
+    food = models.IntegerField(default=0)
+    facilities = models.IntegerField(default=0)
     additionalInfo = models.CharField(max_length = 200)
     date = models.DateTimeField(auto_now=True)
     totalScore = models.IntegerField(blank = True)
-    user = models.ForeignKey(UserProfile)
-    stadium = models.ForeignKey(Stadium)
+    user = models.ForeignKey(UserProfile, on_delete = models.CASCADE)
+    stadium = models.ForeignKey(Stadium, on_delete = models.CASCADE)
 
     def save(self, *args, **kwargs):
         self.totalScore = self.atmosphere + self.food + self.facilities
+
 
         #Calls the save() function of the current stadium to increment the
         #ReviewTotal by 1 and to add the TotalScore of this review to the TotalScore for the stadium
         Stadium.save(self.stadium,self.totalScore)
 
+
         super(Review, self).save(*args, **kwargs)
 
     def __str__(self):
         return str(self.id)
+
 
     
     def __repr__(self):
@@ -101,3 +102,5 @@ class Review(models.Model):
 
 
 
+=======
+>>>>>>> ee4d1ec93aad917c0f2391276a939bea90f9c52a

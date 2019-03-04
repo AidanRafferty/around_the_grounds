@@ -1,0 +1,32 @@
+{% extends 'ATGApp/base.html'}
+{% load staticfiles %}
+
+{% block title_block %}
+    Stadiums
+{% endblock %}
+
+{% block body_block %}
+    <h1>My Account</h1>
+        
+        <div>
+            {% if user.is_authenticated %}
+                <p>If the stadium you want to review isnt here you can <a href="{% url 'add_stadium' %}"">add one</a></p>
+            {% else %}
+                <p>To add a new stadium you need to <a href="{% url 'login' %}">Log In</a> to your account, or register a <a href="{% url 'register' %}">New Account</a>.</p>
+
+            {% if stadiums %}
+                <h2>These are the Stadiums we have for you to review</h2>
+        </div>
+        <div>       
+                <table>
+                    {% for stadium in stadiums %}
+                        <tr>
+                            <td><a href="{% url 'show_stadium' stadium.slug %}">{{ stadium.name }}</a></td>
+                        <!-- profile_pic = models.ImageField(upload_to='profile_pics',blank=True) -->
+                            <td><img src="{{ stadium.picture.url }}"></td>
+                        </tr>
+                </table>
+            {% else %}
+                <h2>There are currently no stadius available to review</h2>
+        </div>
+{% endblock %}
