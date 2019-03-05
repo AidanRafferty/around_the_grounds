@@ -23,7 +23,24 @@ h1 {
     width: 100%;
     float: left;
     }
+
+
+input[type=submit], .button {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 12px 14px;
+    text-decoration: none;
+    background-color: #333;
+    border: 0px;
+    border-radius: 8px;
+}
   
+input[type=submit]:hover, .button:hover{
+    background-color: black;
+    color: rgb(203, 255, 203);
+}
+
 .status h3{
     position: fixed;
     right: -50%;
@@ -46,7 +63,7 @@ h1 {
     }
 .menu li {
     float: left;
-    }
+}
 .menu li a {
     display: block;
     color: white;
@@ -55,8 +72,16 @@ h1 {
     text-decoration: none;
     background-color: #333;
 
-    }
+}
 .menu li a:hover {
     background-color: black;
     color: rgb(203, 255, 203);
-    }
+}
+
+hr{
+    border-top: 3px dotted rgb(0, 139, 70);
+}
+
+p1{
+    color:rgb(0, 139, 70);    
+}
