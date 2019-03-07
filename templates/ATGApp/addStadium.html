@@ -8,7 +8,7 @@
 {% block body_block %}
     <h1>Add Stadium</h1>
 
-    <form id="login_form" method="post" action="{% url 'login'%}">
+    <form novalidate id="stadium_form" method="post" action="/ATGApp/addStadium/">
         {% csrf_token %}
         Stadium Name: <input type="text" name="stadiumName" value="" size="50"/>
         <br/>
