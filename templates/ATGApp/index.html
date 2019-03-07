@@ -1,16 +1,19 @@
 {% extends 'ATGApp/base.html' %}
 {% load staticfiles %}
 
+{% block script_block %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function(){
+        $("#1").click(function(){
+            $("#div1").toggle();
+        });
+    });
+</script>
+{% endblock %}
+
 {% block title_block %}
     Home
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script>
-        $(document).ready(function(){
-            $("button").click(function(){
-                $("#div1").load("demo_test.txt #p1");
-            });
-        });
-    </script>
 {% endblock %}
 
 {% block body_block %}
@@ -26,9 +29,9 @@
         </p>
     </div>
       
-    <div id="div1"><h2>Let jQuery AJAX Change This Text</h2></div>
+    <div id="div1"><h2>Let jQuery AJAX hide This Text</h2></div>
 
-    <button class="button">Get External Content</button>
+    <button id = "1" class="button">Click and the text above will vanish or come back</button>
 
     <!-- <div>
         {% if pages %}

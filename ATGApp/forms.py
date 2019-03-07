@@ -7,36 +7,36 @@ class StadiumForm(forms.ModelForm):
     capacity = forms.IntegerField(Stadium._meta.get_field("capacity").max_length, help_text="Please the Stadiums Capacity.")
     postcode = forms.CharField(Stadium._meta.get_field("name").max_length, help_text="Please enter the Postcode of the Stadium.")
     #image input
+    # 
     slug = forms.CharField(widget=forms.HiddenInput(), required=False)
 
     # An inline class to provide additional information on the form.
     class Meta:
         # Provide an association between the ModelForm and a model
         model = Stadium
-        fields = ('name','capacity', 'postcode')
-        # fields = ('name','capacity', 'postcode', 'image')
+        fields = ('name','capacity', 'postcode', 'photo')
 
-# Number_Choices=[
-#     ('1','Unacceptable),
-#     ('2','Poor),
-#     ('3','Satisfactory),
-#     ('4','Good),
-#     ('5','Exellent),
-# ]
 
 class ReviewForm(forms.ModelForm):
-    stadiumName = forms.CharField(Stadium._meta.get_field("stadiumName").max_length, help_text="Please enter the Stadium name.")
-    # atmosphere = forms.IntegerField(label="Atmosphere:", widgets=forms.RadioSelect(choices=Number_Choices))
-    # food = forms.IntegerField(label="Food:", widgets=forms.RadioSelect(choices=Number_Choices))
-    # facilities = forms.IntegerField(label="Facilities:", widgets=forms.RadioSelect(choices=Number_Choices))
-#additional comments
-    slug = forms.CharField(widget=forms.HiddenInput(), required=False)
 
+    Number_Choices=[('1','Unacceptable'), ('2','Poor'), ('3','Satisfactory'), ('4','Good'), ('5','Exellent')]
+
+    # dont need to add the stadium name as we access the stadium page then click
+    # the add review link which takes the slug of the stadium as a perameter in the url for 
+    # its add review page. We then use this slug after the form submitted to get 
+    # the asscociated stadium object the review is for and assign this to the stadium field 
+    # for the review. We then get the current logged in userProfile, We then save the stadium which updates the total score the date and then updates 
+    # the total score and the number of reviews for the stadium that has just been reviewed. 
+   
+    atmosphere = forms.IntegerField(label="Atmosphere:", widget=forms.RadioSelect(choices=Number_Choices))
+    food = forms.IntegerField(label="Food:", widget=forms.RadioSelect(choices=Number_Choices))
+    facilities = forms.IntegerField(label="Facilities:", widget=forms.RadioSelect(choices=Number_Choices))
+    additionalInfo = forms.CharField(max_length=200, help_text="Please include any additonal information about your visit", required = False)
     # An inline class to provide additional information on the form.
     class Meta:
         # Provide an association between the ModelForm and a model
-        model = Stadium
-        fields = ('stadiumName','atmosphere', 'food', 'facilities', 'additionalComments')
+        model = Review
+        fields = ('atmosphere', 'food', 'facilities', 'additionalInfo')
 
 class UserForm(forms.ModelForm):
     password = forms.CharField(widget=forms.PasswordInput())
