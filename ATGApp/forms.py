@@ -13,21 +13,22 @@ class StadiumForm(forms.ModelForm):
     class Meta:
         # Provide an association between the ModelForm and a model
         model = Stadium
-        fields = ('name','capacity', 'postcode', 'image')
+        fields = ('name','capacity', 'postcode')
+        # fields = ('name','capacity', 'postcode', 'image')
 
-Number_Choices=[
-    (1,'Unacceptable),
-    (2,'Poor),
-    (3,'Satisfactory),
-    (4,'Good),
-    (5,'Exellent),
-]
+# Number_Choices=[
+#     ('1','Unacceptable),
+#     ('2','Poor),
+#     ('3','Satisfactory),
+#     ('4','Good),
+#     ('5','Exellent),
+# ]
 
 class ReviewForm(forms.ModelForm):
     stadiumName = forms.CharField(Stadium._meta.get_field("stadiumName").max_length, help_text="Please enter the Stadium name.")
-    atmosphere = forms.IntegerField(label="Atmosphere:", widgets=forms.RadioSelect(choices=Number_Choices))
-    food = forms.IntegerField(label="Food:", widgets=forms.RadioSelect(choices=Number_Choices))
-    facilities = forms.IntegerField(label="Facilities:", widgets=forms.RadioSelect(choices=Number_Choices))
+    # atmosphere = forms.IntegerField(label="Atmosphere:", widgets=forms.RadioSelect(choices=Number_Choices))
+    # food = forms.IntegerField(label="Food:", widgets=forms.RadioSelect(choices=Number_Choices))
+    # facilities = forms.IntegerField(label="Facilities:", widgets=forms.RadioSelect(choices=Number_Choices))
 #additional comments
     slug = forms.CharField(widget=forms.HiddenInput(), required=False)
 
