@@ -3,7 +3,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth import authenticate, login
 from django.core.urlresolvers import reverse
 from ATGApp.models import Review, Stadium
-from ATGApp.forms import UserForm, UserProfileForm
+from ATGApp.forms import UserForm, UserProfileForm, StadiumForm
 
 def index(request):
     #Returns information on highest rated stadium
@@ -22,6 +22,24 @@ def stadiums(request):
     
     context_dict = {'images':images}
     return render(request, 'ATGApp/stadiums.html', context = context_dict)
+
+def add_stadium(request):
+    form = StadiumForm()
+
+    if request.method == "POST":
+        form = StadiumForm(request.POST)
+    
+        if form.is_valid():
+            form.save(commit=True)
+            return index(request)
+        
+        else:
+            print(form.errors)
+    return render(request, "ATGApp/add_stadium.html", {"form": form})
+
+# def add_stadium(request):
+#     context_dict={}
+#     return render(request, 'ATGApp/add_stadium.html', contect = context_dict)
 
 #def chosen_stadium(request):
     #
@@ -46,6 +64,7 @@ def user_login(request):
             return HttpResponse("Invalid login details supplied.")
     else:
         return render(request, 'ATGApp/login.html', {})
+
 def register(request):
     registered = False
 
