@@ -10,9 +10,9 @@
         
         <div>
             {% if user.is_authenticated %}
-                <p>If the stadium you want to review isnt here you can <a href="{% url 'add_stadium' %}"">Add One Here!</a></p>
+                <p>If the stadium you want to review isnt here you can <a href="{% url 'add_stadium' %}"">Add One Here!"</a></p>
             {% else %}
-                <p>To add a new stadium you need to <a href="{% url 'login' %}">Log In</a> to your account, or register a <a href="{% url 'register' %}">New Account</a>.</p>
+                <p>To add a new stadium you need to <a href="{% url 'login' %}">Log In</a> to your account, or register a <a href="{% url 'register' %}">New Account</a></p>
             {% endif %}
         </div>
         <div>       
@@ -28,6 +28,11 @@
                 </table>
             {% else %}
                 <h2>There are currently no stadius available to review</h2>
+				{% for image in images %}
+					<img src="{{image.photo.url}}" alt={{image.name}} height="50" width="50"/>
+				{% endfor %}
+
+				
             {% endif %}
         </div>
 {% endblock %}

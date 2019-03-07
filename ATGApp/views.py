@@ -17,8 +17,16 @@ def index(request):
     return response
 
 def stadiums(request):
-    context_dict = {}
+    #Returns top 6 stadiums
+    images = Stadium.objects.order_by('-TotalScore')[:6]
+    
+    context_dict = {'images':images}
     return render(request, 'ATGApp/stadiums.html', context = context_dict)
+
+#def chosen_stadium(request):
+    #
+    #if request.method == 'POST':
+     #   chosen_stadium = request.post
 
 def user_login(request):
     if request.method == 'POST':
