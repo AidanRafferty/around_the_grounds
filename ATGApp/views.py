@@ -81,3 +81,16 @@ def register(request):
 def account(request):
     context_dict = {}
     return render(request,'ATGApp/myAccount.html', context = context_dict)
+
+def like_category(request):
+    stad_id = None
+    if  request.method == 'GET':
+        stad_id = request.GET['stadium_id']
+        likes = 0 
+        if stad_id:
+            stad = Stadium.objects.get(id=int(stad_id))
+            if stad:
+                likes = stad.likes + 1
+                stad.likes = likes
+                stad.save()
+    return HttpResponse(likes)

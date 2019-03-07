@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 {% load staticfiles %}
 {% load atg_template_tags %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
 
 <html>
     <head >
         <meta charset="UTF-8"/>
         <link rel="stylesheet" href="{% static 'css/css.css' %}">
+        <script src="{% static "js/rango-ajax.js" %}"></script>
         <title>
             Around The Grounds -
             {% block title_block %}

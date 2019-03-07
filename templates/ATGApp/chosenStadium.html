@@ -10,9 +10,16 @@
 {% block body_block %}
 
     {% if category %}
-        <h1>{{ category.name }}</h1>
+        <h1>{{ stadium.name }}</h1>
 
-        
+        <div>
+            <strong id="like_count">{{ category.likes }}</strong> people like this category
+            <button id="likes" data-catid="{{category.id}}"
+            class="btn btn-primary btn-sm" type="button">
+            Like
+            </button>
+            
+        </div>
 
         {% if pages %}
             <ul>
