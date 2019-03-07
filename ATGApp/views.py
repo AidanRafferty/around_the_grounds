@@ -18,9 +18,9 @@ def index(request):
 
 def stadiums(request):
     #Returns top stadiums
-    images = Stadium.objects.order_by('-TotalScore')
+    stadiums = Stadium.objects.order_by('-TotalScore')
     
-    context_dict = {'images':images}
+    context_dict = {'stadiums':stadiums}
     return render(request, 'ATGApp/stadiums.html', context = context_dict)
 
 def add_stadium(request):
@@ -37,14 +37,16 @@ def add_stadium(request):
             print(form.errors)
     return render(request, "ATGApp/add_stadium.html", {"form": form})
 
-# def add_stadium(request):
-#     context_dict={}
-#     return render(request, 'ATGApp/add_stadium.html', contect = context_dict)
+def add_stadium(request):
+    context_dict={}
+    return render(request, 'ATGApp/add_stadium.html', contect = context_dict)
 
-#def chosen_stadium(request):
-    #
-    #if request.method == 'POST':
-     #   chosen_stadium = request.post
+def chosenStadium(request):
+    
+    # if request.method == 'POST':
+    #    chosen_stadium = request.post
+    return render(request, 'ATGApp/chosenStadium.html', contect = context_dict)
+
 
 def user_login(request):
     if request.method == 'POST':

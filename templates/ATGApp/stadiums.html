@@ -19,18 +19,19 @@
             {% if stadiums %}
                 <h2>These are the Stadiums we have for you to review</h2>
                 <table>
-                    <!-- {% for stadium in stadiums %}
+                    {% for stadium in stadiums %}
                         <tr>
-                            <td><a href="{% url 'chosenStadium' stadium.slug %}">{{ stadium.name }}</a></td>
+                            <td><a href="{% url 'chosenStadium' %}">{{ stadium.name }}</a></td>
+                            <!-- <td><a href="{% url 'chosenStadium' stadium.slug %}">{{ stadium.name }}</a></td> -->
                             <td><img src="{{ stadium.picture.url }}"></td>
                         </tr>
-                    {% endfor %} -->
+                    {% endfor %}
                 </table>
             {% else %}
-                <h2>There are currently no stadius available to review</h2>
-				<!-- {% for image in images %}
+                <h2>There are currently no stadiums available to review</h2>
+				{% for image in images %}
 					<img src="{{image.photo.url}}" alt={{image.name}} height="50" width="50"/>
-				{% endfor %} -->
+				{% endfor %}
 
 				
             {% endif %}
