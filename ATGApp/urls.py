@@ -10,4 +10,5 @@ urlpatterns = [
     url(r'^register/$', views.register, name='register'),
     url(r'^account/$', views.account, name='account'),
     url(r'^like/$', views.like_category, name='like_category'),
+    url(r'^add_stadium/$', views.add_stadium,name='add_stadium'),
 ]

@@ -17,8 +17,8 @@ def index(request):
     return response
 
 def stadiums(request):
-    #Returns top 6 stadiums
-    images = Stadium.objects.order_by('-TotalScore')[:6]
+    #Returns top stadiums
+    images = Stadium.objects.order_by('-TotalScore')
     
     context_dict = {'images':images}
     return render(request, 'ATGApp/stadiums.html', context = context_dict)
