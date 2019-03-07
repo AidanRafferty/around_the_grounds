@@ -21,6 +21,7 @@
                 <li><a href="{% url 'stadiums' %}">Stadiums</a></li>
                 {% if user.is_authenticated %}
                     <li><a href="{% url 'account' %}">My Account</a></li>
+                    <li><a href="{% url 'account' %}">Log Out</a></li>
                 {% else %}
                     <li><a href="{% url 'login' %}">Login</a></li>
                     <li><a href="{% url 'register' %}">Sign Up</a></li>
