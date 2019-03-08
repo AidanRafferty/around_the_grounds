@@ -9,7 +9,7 @@ def index(request):
     #Returns information on highest rated stadium
     #Returns picture of highest rated stadium
 
-    highestRatedStadium = Stadium.objects.order_by('-totalScore')[:1]
+    highestRatedStadium = Stadium.objects.order_by('-averageScore')[:1]
     
     
     context_dict = {'highestRatedStadium' : highestRatedStadium}
@@ -37,26 +37,15 @@ def add_stadium(request):
             print(form.errors)
     return render(request, "ATGApp/add_stadium.html", {"form": form})
 
-def chosenStadium(request, stadium_name_slug):
+def add_stadium(request):
+    context_dict={}
+    return render(request, 'ATGApp/add_stadium.html', contect = context_dict)
+
+def chosenStadium(request):
     
     # if request.method == 'POST':
     #    chosen_stadium = request.post
-    # context_dict={chosen_stadium}
-    context_dict = {}
-
-    try:
-        stadium = Stadium.objects.get(slug = stadium_name_slug)
-        print(stadium)
-        reviews = Review.objects.filter(stadium = stadium)
-
-        context_dict["reviews"] = reviews
-        context_dict["stadium"] = stadium
-
-    except Stadium.DoesNotExist:
-        context_dict["stadium"] = None
-        context_dict["reviews"] = None
-
-    return render(request, 'ATGApp/chosenStadium.html', context=context_dict)
+    return render(request, 'ATGApp/chosenStadium.html', contect = context_dict)
 
 
 def user_login(request):
