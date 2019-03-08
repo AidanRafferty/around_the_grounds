@@ -21,7 +21,7 @@
                 <table>
                     {% for stadium in stadiums %}
                         <tr>
-                            <td><a href="{% url 'chosenStadium' %}">{{ stadium.name }}</a></td>
+                            <td><a href="{% url 'chosenStadium' stadium.slug %}">{{ stadium.name }}</a></td>
                             <!-- <td><a href="{% url 'chosenStadium' stadium.slug %}">{{ stadium.name }}</a></td> -->
                             <td><img src="{{ stadium.picture.url }}"></td>
                         </tr>

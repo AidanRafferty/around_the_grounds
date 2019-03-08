@@ -11,5 +11,6 @@ urlpatterns = [
     url(r'^account/$', views.account, name='account'),
     url(r'^like/$', views.like_category, name='like_category'),
     url(r'^add_stadium/$', views.add_stadium,name='add_stadium'),
-    url(r'^chosenStadium/$', views.chosenStadium,name='chosenStadium'),
+    url(r'^chosenStadium/(?P<stadium_name_slug>[\w\-]+)/$', views.chosenStadium,name='chosenStadium'),
+    # url(r'^add_review/(?P<stadium_name_slug>[\w\-]+)/$', views.chosenStadium,name='chosenStadium'),
 ]
