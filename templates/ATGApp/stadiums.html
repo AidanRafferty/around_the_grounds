@@ -18,7 +18,7 @@
         <div>       
             {% if stadiums %}
                 <h2>These are the Stadiums we have for you to review</h2>
-                <table align="center">
+               <!---- <table align="center">
                     {% for stadium in stadiums %}
                         <tr>
                             <td><a href="{% url 'chosenStadium' stadium.slug %}">{{ stadium.name }}</a></td>
@@ -27,7 +27,20 @@
                             <td><a href="{% url 'chosenStadium' stadium.slug %}"><img class="stadiums"src="{{ stadium.photo.url }}"alt={{image.name}} height=50 width=50</a></td>
                         </tr>
                     {% endfor %}
-                </table>
+                </table>-->
+                {% for stadium in stadiums %}
+
+                    <div class = "responsive">
+                        <div class = "gallery">
+                            <a href="{% url 'chosenStadium' stadium.slug %}">
+                            <img src="{{ stadium.photo.url }}" alt="{{ stadium.name }}" width = "600" height="400">
+                            <div class = "stadName">{{ stadium.name }}</div>
+                            <br>
+                            </a>
+                        </div>
+                    </div>
+                {% endfor %}
+                <div class="clearBox"></div>
             {% else %}
                 <h2>There are currently no stadiums available to review</h2>
 				<!-- {% for image in images %}
