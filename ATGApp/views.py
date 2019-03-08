@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 from django.core.urlresolvers import reverse
 from ATGApp.models import Review, Stadium
 from ATGApp.forms import UserForm, UserProfileForm, StadiumForm
@@ -75,6 +76,13 @@ def user_login(request):
             return HttpResponse("Invalid login details supplied.")
     else:
         return render(request, 'ATGApp/login.html', {})
+
+@login_required
+def user_logout(request):
+    logout(request)
+
+    return HttpResponseRedirect(reverse('index'))
+
 
 def register(request):
     registered = False
