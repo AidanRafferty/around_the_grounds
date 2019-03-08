@@ -15,18 +15,10 @@
             {{ stadium.description }}
         </p>
 
-        <!-- <div>
-            <strong id="like_count">{{ stadium.likes }}</strong> people like this stadium
-            <button id="likes" data-id="{{stadium.id}}"
-            class="btn btn-primary btn-sm" type="button">
-            Like
-            </button>
-            
-        </div> -->
         {% if user.is_authenticated %}
-            link to add review
-            <!-- <a href="/ATGApp/stadium/{{stadium.slug}}/add_review/">Add page</a><br/> -->
-        {% endif %}
+            
+            <td>You are logged into an account so you can <a href="{% url 'add_stadium' stadium.slug %}">Write a Review</a></td>
+            {% endif %}
 
         {% if reviews %}
             <ul>

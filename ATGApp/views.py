@@ -23,7 +23,7 @@ def stadiums(request):
     context_dict = {'stadiums':stadiums}
     return render(request, 'ATGApp/stadiums.html', context = context_dict)
 
-def add_stadium(request):
+def add_stadium(request, stadium_name_slug):
     form = StadiumForm()
 
     if request.method == "POST":
@@ -37,16 +37,25 @@ def add_stadium(request):
             print(form.errors)
     return render(request, "ATGApp/add_stadium.html", {"form": form})
 
-def add_stadium(request):
-    context_dict={}
-    return render(request, 'ATGApp/add_stadium.html', contect = context_dict)
-
-def chosenStadium(request):
+def chosenStadium(request, stadium_name_slug):
     
     # if request.method == 'POST':
-    #    chosen_stadium = request.post
-    return render(request, 'ATGApp/chosenStadium.html', contect = context_dict)
+    # context_dict={chosen_stadium}
+    context_dict = {}
 
+    try:
+        stadium = Stadium.objects.get(slug = stadium_name_slug)
+        print(stadium)
+        reviews = Review.objects.filter(stadium = stadium)
+
+        context_dict["reviews"] = reviews
+        context_dict["stadium"] = stadium
+
+    except Stadium.DoesNotExist:
+        context_dict["stadium"] = None
+        context_dict["reviews"] = None
+
+    return render(request, 'ATGApp/chosenStadium.html', context=context_dict)
 
 def user_login(request):
     if request.method == 'POST':
