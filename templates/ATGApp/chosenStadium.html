@@ -17,17 +17,30 @@
 
         {% if user.is_authenticated %}
             
-            <td>You are logged into an account so you can <a href="{% url 'add_stadium' stadium.slug %}">Write a Review</a></td>
+            <div>You are logged into an account so you can <a href="{% url 'add_stadium' stadium.slug %}">Write a Review</a></div>
         {% else %}
-            <td>You are not logged logged into an account so you cannot write a review.<br/><a href="{% url 'Login' }">Log In</a> to do so.</td>
+            <div>You are not logged logged into an account so you cannot write a review.<br/><a href="{% url 'Login' }">Log In</a> to do so.</div>
         {% endif %}
 
         {% if reviews %}
-            <ul>
+            <table id="reviews">
+                <tr>
+                    <th>Reviewer</th>
+                    <th>Atmosphere</th>
+                    <th>Food</th>
+                    <th>Facilities</th>
+                    <th>Additional Information</th>
+                </tr>
                 {% for review in reviews %}
-                    <li>"showing review"</li>
+                    <tr>
+                        <td>{{review.user}}</td>
+                        <td>{{review.atmosphere}}</td>
+                        <td>{{review.food}}</td>
+                        <td>{{review.facilities}}</td>
+                        <td>{{review.additionalInfo}}</td>
+                    </tr>
                 {% endfor %}
-            </ul>
+            </table>
             
         {% else %}
             <strong>No reviews currently for this stadium.</strong>

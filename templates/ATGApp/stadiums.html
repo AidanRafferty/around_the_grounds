@@ -10,7 +10,7 @@
         
         <div>
             {% if user.is_authenticated %}
-                <!-- <p>If the stadium you want to review isnt here you can <a href="{% url 'add_stadium' %}"">Add One Here!"</a></p> -->
+                <p>If the stadium you want to review isnt here you can <a href="{% url 'add_stadium' %}">Add One Here!</a></p>
             {% else %}
                 <p>To add a new stadium you need to <a href="{% url 'login' %}">Log In</a> to your account, or register a <a href="{% url 'register' %}">New Account</a></p>
             {% endif %}
@@ -18,16 +18,7 @@
         <div>       
             {% if stadiums %}
                 <h2>These are the Stadiums we have for you to review</h2>
-               <!---- <table align="center">
-                    {% for stadium in stadiums %}
-                        <tr>
-                            <td><a href="{% url 'chosenStadium' stadium.slug %}">{{ stadium.name }}</a></td>
-                        </tr>
-                        <tr>
-                            <td><a href="{% url 'chosenStadium' stadium.slug %}"><img class="stadiums"src="{{ stadium.photo.url }}"alt={{image.name}} height=50 width=50</a></td>
-                        </tr>
-                    {% endfor %}
-                </table>-->
+               
                 {% for stadium in stadiums %}
 
                     <div class = "responsive">
@@ -42,21 +33,7 @@
                 {% endfor %}
                 <div class="clearBox"></div>
             {% else %}
-                <h2>There are currently no stadiums available to review</h2>
-				<!-- {% for image in images %}
-					<img src="{{image.photo.url}}" alt={{image.name}} height="50" width="50"/>
-				{% endfor %} -->
-
-				
+                <h2>There are currently no stadiums available to review</h2>		
             {% endif %}
         </div>
 {% endblock %}
-
-
-
-
-{% for stadium in stadiums %}
-                        <tr class="stadiums">
-                            <a href="{% url 'chosenStadium' stadium.slug %}"><td><{{ stadium.name }}<br><img src="{{ stadium.photo.url }}"alt={{image.name}} height="50" width="50"></td></a>
-                        </tr>
-                    {% endfor %}
