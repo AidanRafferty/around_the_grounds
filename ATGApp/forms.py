@@ -2,19 +2,25 @@ from django import forms
 from ATGApp.models import Review, Stadium, UserProfile
 from django.contrib.auth.models import User
 
-class StadiumForm(forms.ModelForm):
+class addStadiumForm(forms.ModelForm):
     name = forms.CharField(Stadium._meta.get_field("name").max_length, help_text="Please enter the Stadium name.")
     capacity = forms.IntegerField(Stadium._meta.get_field("capacity").max_length, help_text="Please the Stadiums Capacity.")
-    postcode = forms.CharField(Stadium._meta.get_field("name").max_length, help_text="Please enter the Postcode of the Stadium.")
+    postcode = forms.CharField(Stadium._meta.get_field("postcode").max_length, help_text="Please enter the Postcode of the Stadium.")
+    homeTeam = forms.CharField(Stadium._meta.get_field("homeTeam").max_length, help_text="What is the home team that plays at the Stadium.")
+    description = forms.CharField(Stadium._meta.get_field("description").max_length, help_text="Please give a small description of the Stadium. (MAX 500 characters)")
     #image input
-    # 
+    ##HIDDEN##
+    #user = 
+    Review_count = forms.IntegerField(widget=forms.HiddenInput(), initial=0)
+    total_Score = forms.IntegerField(widget=forms.HiddenInput(), initial=0)
+    average = forms.IntegerField(widget=forms.HiddenInput(), initial=0)
     slug = forms.CharField(widget=forms.HiddenInput(), required=False)
 
     # An inline class to provide additional information on the form.
     class Meta:
         # Provide an association between the ModelForm and a model
         model = Stadium
-        fields = ('name','capacity', 'postcode', 'photo')
+        fields = ('name','capacity', 'postcode', 'homeTeam', 'description')
 
 
 class ReviewForm(forms.ModelForm):

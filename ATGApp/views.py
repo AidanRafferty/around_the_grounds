@@ -4,7 +4,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.core.urlresolvers import reverse
 from ATGApp.models import Review, Stadium
-from ATGApp.forms import UserForm, UserProfileForm, StadiumForm
+from ATGApp.forms import UserForm, UserProfileForm, addStadiumForm
 
 def index(request):
     #Returns information on highest rated stadium
@@ -19,16 +19,16 @@ def index(request):
 
 def stadiums(request):
     #Returns top stadiums
-    stadiums = Stadium.objects.order_by('-TotalScore')
+    stadiums = Stadium.objects.order_by('-name')
     
     context_dict = {'stadiums':stadiums}
     return render(request, 'ATGApp/stadiums.html', context = context_dict)
 
-def add_stadium(request, stadium_name_slug):
-    form = StadiumForm()
+def add_stadium(request):
+    form = addStadiumForm()
 
     if request.method == "POST":
-        form = StadiumForm(request.POST)
+        form = addStadiumForm(request.POST)
     
         if form.is_valid():
             form.save(commit=True)
@@ -46,8 +46,7 @@ def chosenStadium(request, stadium_name_slug):
 
     try:
         stadium = Stadium.objects.get(slug = stadium_name_slug)
-        print(stadium)
-        reviews = Review.objects.filter(stadium = stadium)
+        reviews = Review.objects.order_by('-date').filter(stadium = stadium)
 
         context_dict["reviews"] = reviews
         context_dict["stadium"] = stadium
