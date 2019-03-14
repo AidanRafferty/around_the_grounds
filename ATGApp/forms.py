@@ -13,7 +13,7 @@ class addStadiumForm(forms.ModelForm):
     photo = forms.ImageField(help_text = "Upload a picture of the stadium ")
     
     ##HIDDEN##
-    #USER
+    #user_id = forms.CharField(widget=forms.HiddenInput())
     Review_count = forms.IntegerField(widget=forms.HiddenInput(), initial=0)
     total_Score = forms.IntegerField(widget=forms.HiddenInput(), initial=0)
     average = forms.IntegerField(widget=forms.HiddenInput(), initial=0)

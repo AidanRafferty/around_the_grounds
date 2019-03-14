@@ -3,7 +3,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.core.urlresolvers import reverse
-from ATGApp.models import Review, Stadium
+from ATGApp.models import Review, Stadium, UserProfile
 from ATGApp.forms import UserForm, UserProfileForm, addStadiumForm
 
 def index(request):

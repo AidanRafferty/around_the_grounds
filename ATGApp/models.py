@@ -76,7 +76,6 @@ class Stadium(models.Model):
 
 
         self.slug = slugify(self.name)
-
         super(Stadium, self).save(*args, **kwargs)
 
     class Meta:
