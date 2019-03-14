@@ -28,7 +28,8 @@ def add_stadium(request):
     form = addStadiumForm()
 
     if request.method == "POST":
-        form = addStadiumForm(request.POST)
+        
+        form = addStadiumForm(request.POST,request.FILES)
     
         if form.is_valid():
             form.save(commit=True)
