@@ -25,6 +25,7 @@ def stadiums(request):
     return render(request, 'ATGApp/stadiums.html', context = context_dict)
 
 def add_stadium(request):
+
     form = addStadiumForm()
 
     if request.method == "POST":
@@ -32,11 +33,24 @@ def add_stadium(request):
         form = addStadiumForm(request.POST,request.FILES)
     
         if form.is_valid():
-            form.save(commit=True)
-            return index(request)
+
+            if request.user.is_authenticated():
+
+                user = request.user
+                
+                stadium = form.save(commit=False)
+
+                user_profile =  UserProfile.objects.get(user=user)
+                
+                stadium.user = user_profile
+
+                stadium.save()
+
+                return index(request)
         
         else:
             print(form.errors)
+            
     return render(request, "ATGApp/add_stadium.html", {"form": form})
 
 def chosenStadium(request, stadium_name_slug):
