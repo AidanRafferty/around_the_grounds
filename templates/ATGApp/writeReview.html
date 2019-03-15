@@ -6,9 +6,9 @@
 {% endblock %}
 
 {% block body_block %}
-    <h1>Write a Review for: {{stadium.stadiumName}}</h1>
+    <h1>Write a Review for: {{ stadium.name }}</h1>
 
-    <form id="Review_form" method="post" action="{% url 'writeReview'%}">
+    <form id="Review_form" method="post" action="{% url 'writeReview' stadium.slug %}">
         {% csrf_token %}
         <table>
             <tr>

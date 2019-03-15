@@ -17,7 +17,7 @@
 
         {% if user.is_authenticated %}
             
-            <div>You are logged into an account so you can <a href="{% url 'add_stadium' stadium.slug %}">Write a Review</a></div>
+            <div>You are logged into an account so you can <a href="{% url 'writeReview' stadium.slug %}">Write a Review</a></div>
         {% else %}
             <div>You are not logged logged into an account so you cannot write a review.<br/><a href="{% url 'Login' }">Log In</a> to do so.</div>
         {% endif %}

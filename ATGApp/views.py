@@ -4,7 +4,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.core.urlresolvers import reverse
 from ATGApp.models import Review, Stadium, UserProfile
-from ATGApp.forms import UserForm, UserProfileForm, addStadiumForm
+from ATGApp.forms import UserForm, UserProfileForm, addStadiumForm, ReviewForm
 
 def index(request):
     #Returns information on highest rated stadium
@@ -50,7 +50,7 @@ def add_stadium(request):
         
         else:
             print(form.errors)
-            
+
     return render(request, "ATGApp/add_stadium.html", {"form": form})
 
 def chosenStadium(request, stadium_name_slug):
@@ -146,3 +146,66 @@ def like_category(request):
                 stad.likes = likes
                 stad.save()
     return HttpResponse(likes)
+
+def writeReview(request, stadium_name_slug):
+    
+    context_dict = {}
+
+    try:
+
+        stadium = Stadium.objects.get(slug=stadium_name_slug)
+    
+    except Stadium.DoesNotExist:
+
+        stadium = None
+
+    form = ReviewForm()
+
+    if request.method == "POST":
+
+        form = ReviewForm(request.POST, request.FILES)
+
+        if form.is_valid():
+
+            if request.user.is_authenticated():
+
+                user = request.user
+
+                review = form.save(commit=False)
+
+                review.stadium = stadium
+
+                user_profile = UserProfile.objects.get(user=user)
+
+                review.user = user_profile
+
+                print("stadium saved")
+
+                review.save()
+
+                return index(request)
+    else:
+
+        print(form.errors)
+
+    return render(request, "ATGApp/writeReview.html", {"form":form, "stadium": stadium})
+    
+    '''
+    
+
+    try:
+        stadium = Stadium.objects.get(slug = stadium_name_slug)
+        reviews = Review.objects.order_by('-date').filter(stadium = stadium)
+
+        context_dict["reviews"] = reviews
+        context_dict["stadium"] = stadium
+
+    except Stadium.DoesNotExist:
+        context_dict["stadium"] = None
+        context_dict["reviews"] = None
+
+ 
+
+    return render(request, 'ATGApp/chosenStadium.html', context=context_dict)
+
+    '''

@@ -30,9 +30,6 @@ def generate_user():
     p3 = UserProfile.objects.create(user=new_user3)
     p3.save()
 
-
-
-
     # then a dictionary of stadiums for the users to add 
     Old_Trafford_Reviews = [
         {"atmosphere": 4,
