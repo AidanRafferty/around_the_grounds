@@ -40,10 +40,14 @@
                 {% for review in reviews %}
                     <tr>
                         <td>{{review.user}}</td>
-                        <td>{{review.atmosphere}}</td>
-                        <td>{{review.food}}</td>
-                        <td>{{review.facilities}}</td>
-                        <td>{{review.additionalInfo}}</td>
+                        <td id="atmosphere">{{review.atmosphere}}</td>
+                        <td id="food">{{review.food}}</td>
+                        <td id="facilities">{{review.facilities}}</td>
+                        <td>{% if review.additionalInfo %}
+								{{review.additionalInfo}}
+							{% else %}
+								No additional information.
+							{% endif %}</td>
 						<td>{{review.date}}</td>
                     </tr>
                 {% endfor %}
