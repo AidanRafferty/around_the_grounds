@@ -5,6 +5,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script>
     $(document).ready(function(){
+		$("#div1").hide();
         $("#1").click(function(){
             $("#div1").toggle();
         });
@@ -28,11 +29,24 @@
             <br/>However if you want to leave your own review on a stadium, you will need to register an account with the site.
         </p>
     </div>
-      
-    <div id="div1"><h2>Let jQuery AJAX hide This Text</h2></div>
-
-    <button id = "1" class="button">Click and the text above will vanish or come back</button>
-
+	
+	{% if h %}
+	
+	<button id = "1" class="button">Show Highest Rated Stadium</button>
+		
+		{% for stad in h %}
+			
+			<div id="div1"><h2>
+				
+				{{ stad }}
+			
+			</h2></div>
+		
+		{% endfor %}
+    
+		
+	
+	{% endif %}
     <!-- <div>
         {% if pages %}
             <h2>This is the current highests review of a stadium</h2>

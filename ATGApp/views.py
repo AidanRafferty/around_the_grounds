@@ -10,11 +10,14 @@ def index(request):
     #Returns information on highest rated stadium
     #Returns picture of highest rated stadium
 
-    highestRatedStadium = Stadium.objects.order_by('-averageScore')[:1]
+    HRS = Stadium.objects.order_by('-averageScore')[:1]
     
+    print(HRS)
     
-    context_dict = {'highestRatedStadium' : highestRatedStadium}
-    response = render(request,'ATGApp/index.html',context = context_dict)
+    context_dict = {'h' : HRS}
+
+    response = render(request,'ATGApp/index.html', context = context_dict)
+
     return response
 
 def stadiums(request):
@@ -147,9 +150,8 @@ def like_category(request):
                 stad.save()
     return HttpResponse(likes)
 
+@login_required
 def writeReview(request, stadium_name_slug):
-    
-    context_dict = {}
 
     try:
 
@@ -163,11 +165,11 @@ def writeReview(request, stadium_name_slug):
 
     if request.method == "POST":
 
-        form = ReviewForm(request.POST, request.FILES)
+        form = ReviewForm(request.POST)
 
         if form.is_valid():
 
-            if request.user.is_authenticated():
+            if stadium:
 
                 user = request.user
 
@@ -183,12 +185,14 @@ def writeReview(request, stadium_name_slug):
 
                 review.save()
 
-                return index(request)
+                return stadiums(request)
     else:
 
         print(form.errors)
+    
+    context_dict = {'form':form, 'stadium':stadium}
 
-    return render(request, "ATGApp/writeReview.html", {"form":form, "stadium": stadium})
+    return render(request, 'ATGApp/writeReview.html', context_dict)
     
     '''
     

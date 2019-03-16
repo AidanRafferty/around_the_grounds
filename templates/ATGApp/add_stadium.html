@@ -20,13 +20,13 @@
         {% endfor %}
 
         {% for field in form.visible_fields %}
-            {{ field.errors }}
-            {{ field.help_text }}
+            <label class=helpText>{{ field.errors }}</label>
+            <label class=helpText>{{ field.help_text }}</label>
             {{ field }}
             <br/><br/>
         {% endfor %}
 
-        <input type="submit" value="submit" value="addStadium">
+        <input type="submit" value="Add Stadium" value="addStadium">
         <!-- <input type="file" name="stadiumPic" accept="image/png, image/jpeg"> -->
     </form>
 {% endblock %}

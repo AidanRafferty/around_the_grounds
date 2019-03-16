@@ -98,7 +98,7 @@ class Review(models.Model):
     additionalInfo = models.CharField(max_length=200)
     date = models.DateTimeField(auto_now=True)
     totalScore = models.IntegerField(blank=True)
-
+        
     def save(self, *args, **kwargs):
 
         self.date = date.today()

@@ -45,6 +45,7 @@ input[type=submit]:hover, .button:hover{
 
 /* Login status */
 .status h3{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     position: fixed;
     right: -50%;
     top:-10px;
@@ -162,4 +163,23 @@ div.stadName {
     text-align: left;
     background-color: rgb(212, 245, 212)
 }
+.largeInput{
+
+    width: 75%;
+    height: 40px;
+   
+}
+
+input[type=text], input[type=number], input[type=password], input[type=email] {
+    border: 2px solid black;
+    border-radius: 4px;
+    height: 25px;
+   
+  }
+
+.errorlist {
+    font-weight: bold;   
+}
+
+
 /* review table END */

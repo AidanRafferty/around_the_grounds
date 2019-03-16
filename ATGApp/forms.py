@@ -8,7 +8,7 @@ class addStadiumForm(forms.ModelForm):
     capacity = forms.IntegerField(Stadium._meta.get_field("capacity").max_length, help_text="Please the Stadiums Capacity.")
     postcode = forms.CharField(Stadium._meta.get_field("postcode").max_length, help_text="Please enter the Postcode of the Stadium.")
     homeTeam = forms.CharField(Stadium._meta.get_field("homeTeam").max_length, help_text="What is the home team that plays at the Stadium.")
-    description = forms.CharField(Stadium._meta.get_field("description").max_length, help_text="Please give a small description of the Stadium. (MAX 500 characters)")
+    description = forms.CharField(Stadium._meta.get_field("description").max_length, help_text="Please give a small description of the Stadium. (MAX 500 characters)", widget = forms.TextInput(attrs={'class':'largeInput'}))
     #image input
     photo = forms.ImageField(help_text = "Upload a picture of the stadium ")
     
@@ -37,10 +37,14 @@ class ReviewForm(forms.ModelForm):
     # for the review. We then get the current logged in userProfile, We then save the stadium which updates the total score the date and then updates 
     # the total score and the number of reviews for the stadium that has just been reviewed. 
    
-    atmosphere = forms.IntegerField(label="Atmosphere:", widget=forms.RadioSelect(choices=Number_Choices))
-    food = forms.IntegerField(label="Food:", widget=forms.RadioSelect(choices=Number_Choices))
-    facilities = forms.IntegerField(label="Facilities:", widget=forms.RadioSelect(choices=Number_Choices))
-    additionalInfo = forms.CharField(max_length=200, help_text="Please include any additonal information about your visit", required = False)
+    atmosphere = forms.IntegerField(help_text='Atmosphere:', widget=forms.RadioSelect(choices=Number_Choices))
+    food = forms.IntegerField(help_text='Food:', widget=forms.RadioSelect(choices=Number_Choices))
+    facilities = forms.IntegerField(help_text = "Facilities:", widget=forms.RadioSelect(choices=Number_Choices))
+    additionalInfo = forms.CharField(max_length=200, help_text="Please include any additonal information about your visit", required = False, widget = forms.TextInput(attrs={'class':'largeInput'}))
+    
+    # The following fields are the hidden fields 
+    totalScore = forms.IntegerField(widget = forms.HiddenInput(), initial=0)
+    
     # An inline class to provide additional information on the form.
     class Meta:
         # Provide an association between the ModelForm and a model

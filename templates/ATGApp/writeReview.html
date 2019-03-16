@@ -6,11 +6,34 @@
 {% endblock %}
 
 {% block body_block %}
-    <h1>Write a Review for: {{ stadium.name }}</h1>
 
-    <form id="Review_form" method="post" action="{% url 'writeReview' stadium.slug %}">
-        {% csrf_token %}
-        <table>
+	{% if stadium %}
+		<h1>Write a Review for: {{ stadium.name }}</h1>
+
+		<form id="Review_form" method="post" action="{% url 'writeReview' stadium.slug %}" enctype="multipart/form-data">
+			
+			{% csrf_token %}
+		
+			{% for hidden in form.hidden_fields %}
+				{{ hidden }}
+			{% endfor %}
+
+			{% for field in form.visible_fields %}
+				{{ field.errors }}
+				<label class=helpText>{{ field.help_text }}</label>
+				{{ field }}
+			{% endfor %}
+			
+			</br></br>
+		
+			<input type="submit" value="Submit Review"/>
+		</form>
+	{% else %}
+		<p>The stadium by this name does not exist on our records.<p>
+	{% endif %}
+{% endblock %}
+
+ <!--<table>
             <tr>
                 <th>Atmosphere</th>
                 <th>Food</th>
@@ -46,7 +69,4 @@
         Please leave any other comments about your visit: (MAX 200 characters)<br/>
         Eg. How you got to the stadium, Helpfulness of staff, Availability of parking.<br/>
         <textarea name="message" rows="4" cols="40">(MAX 200 characters)</textarea>
-        <br>
-        <input type="submit" value="Submit Review"/>
-    </form>
-{% endblock %}
+        <br>-->
