@@ -11,7 +11,9 @@
 
     {% if stadium %}
         <h1>{{ stadium.name }}</h1>
-        <h2>Home to - {{ stadium.homeTeam }}</h2>
+        <h2>
+            Home to - {{ stadium.homeTeam }}<br/>With a {{ stadium.capacity}} capacity!
+        </h2>
         <p>
             {{ stadium.description }}
             <br/>
