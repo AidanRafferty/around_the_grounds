@@ -35,6 +35,7 @@
                     <th>Food</th>
                     <th>Facilities</th>
                     <th>Additional Information</th>
+					<th>Review made on</th>
                 </tr>
                 {% for review in reviews %}
                     <tr>
@@ -42,7 +43,8 @@
                         <td>{{review.atmosphere}}</td>
                         <td>{{review.food}}</td>
                         <td>{{review.facilities}}</td>
-                        <td>{{review.additionalInfo}}<br/>Review made on: {{review.date}}</td>
+                        <td>{{review.additionalInfo}}</td>
+						<td>{{review.date}}</td>
                     </tr>
                 {% endfor %}
             </table>
