@@ -134,7 +134,16 @@ def register(request):
                    'registered': registered})
 
 def account(request):
-    context_dict = {}
+
+    if request.user.is_authenticated():
+        user = request.user
+        user_profile = UserProfile.objects.get(user=user)
+        reviews = Review.objects.order_by('-date').filter(user=user_profile)
+        for review in reviews:
+            print(review.stadium)
+        context_dict = {'reviews':reviews}
+    else:
+        context_dict = {}
     return render(request,'ATGApp/myAccount.html', context = context_dict)
 
 def like_category(request):
