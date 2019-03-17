@@ -8,10 +8,10 @@ body:not(.menu) {
     font-family: Arial, Helvetica, sans-serif;
     }
 
-p.stadiumData {
+/**p.stadiumData {
     font-family:Arial, Helvetica, sans-serif;
     font-size: 20px;
-}
+}**/
 
 p:not(.stadiumData){
 
@@ -204,11 +204,10 @@ input[type=text], input[type=number], input[type=password], input[type=email] {
 
 
 /* review table END */
-div.stadiumData{
-
-
-    padding:15px;
-    font-family:Lucidia Sans Unicode;
+div.s{
+    font-family:Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    padding:15px 15px 15px 15px;
     overflow:auto;
     margin:10px;
 

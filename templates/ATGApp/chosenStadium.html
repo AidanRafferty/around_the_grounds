@@ -9,16 +9,24 @@
 
 {% block body_block %}
 	
-	<div class = "stadiumData">
+	
 	
     {% if stadium %}
 	
-        <img class=stadiumImage src="{{ stadium.photo.url }}" alt="Photo of {{ stadium.name }}" width = "600" height="400"> 
+       
 		
         <h1>{{ stadium.name }}</h1><br/>
 		
-		<p class=stadiumData>
+		
         
+		
+		
+		<div class="s">
+		
+		<img class=stadiumImage src="{{ stadium.photo.url }}" alt="Photo of {{ stadium.name }}" width = "600" height="400"> 
+		
+		
+	
 		Home to {{ stadium.homeTeam }}<br/><br/>
 		
 		Capacity - {{ stadium.capacity}}</br><br/>
@@ -38,9 +46,9 @@
 			If you do not have an account with us, register <a href="{% url 'register' %}"> here</a>.
 		
 		{% endif %}
-		</p>
+
 	
-	</div>
+		</div>
 	
         {% if reviews %}
 			</br>
