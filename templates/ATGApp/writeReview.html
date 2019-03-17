@@ -9,7 +9,19 @@
 
 	{% if stadium %}
 		<h1>Write a Review for: {{ stadium.name }}</h1>
-
+		
+		<p>
+		Please rate your experience at {{stadium.name}} below. </br>
+		The ratings you provide for each of the 3 categories 
+		will be converted to a total score for the review. </br>
+		The conversion used to calculate the score is as follows : 
+		</br></br>
+		Unacceptable: 1</br>
+		Poor: 2<br>
+		Satisfactory: 3</br>
+		Good: 4</br>
+		Excellent: 5</br></br>
+		
 		<form id="Review_form" method="post" action="{% url 'writeReview' stadium.slug %}" enctype="multipart/form-data">
 			
 			{% csrf_token %}
@@ -28,8 +40,9 @@
 		
 			<input type="submit" value="Submit Review"/>
 		</form>
+		
 	{% else %}
-		<p>The stadium by this name does not exist on our records.<p>
+		The stadium by this name does not exist on our records.<p>
 	{% endif %}
 {% endblock %}
 

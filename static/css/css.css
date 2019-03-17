@@ -8,8 +8,15 @@ body:not(.menu) {
     font-family: Arial, Helvetica, sans-serif;
     }
 
-p {
+p.stadiumData {
+    font-family:Arial, Helvetica, sans-serif;
+    font-size: 20px;
+}
+
+p:not(.stadiumData){
+
     margin-left:2%;
+
 }
 
 h1 {/* heading */
@@ -36,9 +43,22 @@ input[type=submit], .button {
     border: 0px;
     border-radius: 8px;
 }
+
+.reviewButton{
+    border-radius:8px;
+    color:white;
+    text-align: center;
+    background-color: #333;
+    font-size: 16px;
+    cursor: pointer;
+    padding: 20px;
+    text-decoration: none;
+    display: inline-block;
+    }
+
 /* buttons END */
 
-input[type=submit]:hover, .button:hover{
+input[type=submit]:hover, .button:hover, .reviewButton:hover{
     background-color: black;
     color: rgb(203, 255, 203);
 }
@@ -177,9 +197,25 @@ input[type=text], input[type=number], input[type=password], input[type=email] {
    
   }
 
+
 .errorlist {
     font-weight: bold;   
 }
 
 
 /* review table END */
+div.stadiumData{
+
+
+    padding:15px;
+    font-family:Lucidia Sans Unicode;
+    overflow:auto;
+    margin:10px;
+
+}
+
+.stadiumImage{
+
+float: right;
+
+}

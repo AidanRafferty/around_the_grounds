@@ -8,24 +8,40 @@
 
 
 {% block body_block %}
-
+	
+	<div class = "stadiumData">
+	
     {% if stadium %}
-        <h1>{{ stadium.name }}</h1>
-        <h2>
-            Home to - {{ stadium.homeTeam }}<br/>With a {{ stadium.capacity}} capacity!
-        </h2>
-        <p>
-            {{ stadium.description }}
-            <br/>
-        </p>
-
+	
+        <img class=stadiumImage src="{{ stadium.photo.url }}" alt="Photo of {{ stadium.name }}" width = "600" height="400"> 
+		
+        <h1>{{ stadium.name }}</h1><br/>
+		
+		<p class=stadiumData>
+        
+		Home to {{ stadium.homeTeam }}<br/><br/>
+		
+		Capacity - {{ stadium.capacity}}</br><br/>
+		
+		{{ stadium.description }}</br><br/>
+		
+        Average Score - {{ stadium.averageScore }}
+		<br/><br/>
+		Posted by {{stadium.user}}
+		</br></br><br>
+	
         {% if user.is_authenticated %}
-            
-            <div>You are logged into an account so you can <a href="{% url 'writeReview' stadium.slug %}">Write a Review</a></div>
+            <a class ="reviewButton" href="{% url 'writeReview' stadium.slug %}">Review {{stadium.name}}</a>
         {% else %}
-            <div>You are not logged logged into an account so you cannot write a review.<br/><a href="{% url 'Login' }">Log In</a> to do so.</div>
-        {% endif %}
-
+            To write a review on {{stadium.name}} log into your account <a href="{% url 'login' %}"> here</a>.
+		</br></br>
+			If you do not have an account with us, register <a href="{% url 'register' %}"> here</a>.
+		
+		{% endif %}
+		</p>
+	
+	</div>
+	
         {% if reviews %}
 			</br>
             <table id="reviews">
