@@ -22,7 +22,7 @@ def create_user():
 
     return user_profile
 
-def add_stadium(name,capacity,postcode,description,homeTeam):
+'''def add_stadium(name,capacity,postcode,description,homeTeam):
     stadium = Stadium()
     stadium.name = name
     stadium.capacity = capacity
@@ -33,6 +33,7 @@ def add_stadium(name,capacity,postcode,description,homeTeam):
     stadium.user_id = 1
     stadium.save()
     return stadium
+    '''
 
 def setUp(self):
     self.client = Client()
@@ -42,7 +43,10 @@ class generalTests(TestCase):
       client = Client()
       create_user()
       login = self.client.login(username="testuser",password="test1234")
+      response = self.client.get("http://127.0.0.1:8000/ATGApp/")
       self.assertTrue(login)
+      self.assertNotIn(str(response.content),"Log in")
+      self.assertNotIn(str(response.content),"Sign Up")
 
 class StadiumTests(TestCase):
 
