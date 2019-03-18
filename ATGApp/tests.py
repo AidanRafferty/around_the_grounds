@@ -4,6 +4,7 @@ from django.core.urlresolvers import reverse
 import populate_ATGApp
 from PIL import Image
 import pathlib
+import datetime
 import os
 from django.core.files.uploadedfile import SimpleUploadedFile
 from django.test import Client
@@ -58,16 +59,50 @@ class StadiumTests(TestCase):
       #Create a user and log in
       create_user()
       login = self.client.login(username="testuser",password="test1234")
+      
       #Post a stadium to the add stadium page
       response = self.client.post('http://127.0.0.1:8000/ATGApp/add_stadium/',{'name':"Test",'capacity':500,'postcode':"G61 3QG",'homeTeam':"Home FC",'description':"Decent","photo":SimpleUploadedFile(name='Allianz_Arena.jpeg', content=open(pathlib.Path("C:\\Users\\jackm\\OneDrive\\Desktop\\Allianz_Arena.jpeg"), 'rb').read(), content_type='image/jpeg'),'TotalScore':0,'ReviewCount':0,'averageScore':0,'Review_count':0,'total_Score':0,'average':0})
 
       #Check that the post worked
       self.assertEqual(response.status_code, 200)
       self.assertContains(response, 'Test')
+
+class ReviewTests(TestCase):
+    
+    def test_add_a_review(self):
+        #Create a user and log in
+        create_user()
+        login = self.client.login(username="testuser",password="test1234")
       
+        #Post a stadium to the add stadium page
+        response = self.client.post('http://127.0.0.1:8000/ATGApp/add_stadium/',{'name':"Test",'capacity':500,'postcode':"G61 3QG",'homeTeam':"Home FC",'description':"Decent","photo":SimpleUploadedFile(name='Allianz_Arena.jpeg', content=open(pathlib.Path("C:\\Users\\jackm\\OneDrive\\Desktop\\Allianz_Arena.jpeg"), 'rb').read(), content_type='image/jpeg'),'TotalScore':0,'ReviewCount':0,'averageScore':0,'Review_count':0,'total_Score':0,'average':0})
 
-        
+        #Post a review to the test stadium page
+        reponse = self.client.post('http://127.0.0.1:8000/ATGApp/writeReview/test/',{'atmosphere':0,'food':0,'facilities':0,'additionalInfo':"TestReview",'date':str(datetime.datetime.now()),'totalScore':0})
+      
+        #Set response to test stadium page
+        response = self.client.get("http://127.0.0.1:8000/ATGApp/chosenStadium/test/")
 
+        self.assertContains(response,"TestReview")
+
+
+class MyAccountTests(TestCase):
+
+    def test_account_page(self):
+        #Create a user and log in
+        create_user()
+        login = self.client.login(username="testuser",password="test1234")
+      
+        #Post a stadium to the add stadium page
+        response = self.client.post('http://127.0.0.1:8000/ATGApp/add_stadium/',{'name':"Test",'capacity':500,'postcode':"G61 3QG",'homeTeam':"Home FC",'description':"Decent","photo":SimpleUploadedFile(name='Allianz_Arena.jpeg', content=open(pathlib.Path("C:\\Users\\jackm\\OneDrive\\Desktop\\Allianz_Arena.jpeg"), 'rb').read(), content_type='image/jpeg'),'TotalScore':0,'ReviewCount':0,'averageScore':0,'Review_count':0,'total_Score':0,'average':0})
+
+        #Post a review to the test stadium page
+        reponse = self.client.post('http://127.0.0.1:8000/ATGApp/writeReview/test/',{'atmosphere':0,'food':0,'facilities':0,'additionalInfo':"TestReview",'date':str(datetime.datetime.now()),'totalScore':0})
+      
+        #Set response to test user page
+        response = self.client.get("http://127.0.0.1:8000/ATGApp/account/")
+
+        self.assertContains(response,"TestReview")
         
         
         
