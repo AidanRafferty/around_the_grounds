@@ -61,6 +61,7 @@ input[type=submit], .button {
 input[type=submit]:hover, .button:hover, .reviewButton:hover{
     background-color: black;
     color: rgb(203, 255, 203);
+    cursor: pointer; 
 }
 
 /* Login status */
