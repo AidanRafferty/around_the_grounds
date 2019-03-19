@@ -99,7 +99,9 @@ def generate_user():
     "hometeam": "Manchester United FC",
     "TotalScore": 26,
     "ReviewCount":2,
-    "photo":OTFile},
+    "photo":OTFile,
+	"latitude": "53.463634",
+	"longitude": "-2.291211"},
 
         "Camp Nou": {"Reviews": Camp_Nou_Reviews,
         "capacity": 99354,
@@ -108,24 +110,26 @@ def generate_user():
         "hometeam": "FC Barcelona",
         "TotalScore":30,
         "ReviewCount":2,
-        "photo":CampFile}}
+        "photo":CampFile,
+		"latitude": "41.381556",
+		"longitude": "2.122648"}}
 
     add_stadium("Anfield", 54074, "L4 OTH", 
     "Anfield is the home of Liverpool Football club since 1892 and is the sixth largest football staium in England. The stadium was originally owned by Merseyside rivals Everton until a club dispute led to the Toffees moving to their current ground Goodison Park", 
-    "Liverpool FC", 0, 0, p3, AnfieldFile)
+    "Liverpool FC", 0, 0, p3, AnfieldFile, "53.431175","-2.961002")
 
     add_stadium("Allianz Arena", 75000, 
     "80939 Munchen, Germany", 
     "The Allianz Arena replaced Munich’s old Olympiastadion. First plans for a new stadium were made in 1997, and even though the city of Munich initially preferred reconstructing the Olympiastadion, they eventually went ahead with the clubs’ proposal for an entire new stadium.", 
-    "FC Bayern Munich", 0,0,p2, AllianzFile)
+    "FC Bayern Munich", 0,0,p2, AllianzFile, "48.219615", "11.624707")
 
     add_stadium("Celtic Park", 60832, "G403RE", 
     "Celtic Park, also known as paradise and Parkhead, is home to Celtic Football Club, the champions of the Scottish Permiership and the double treble winners.", 
-    "Celtic FC", 0, 0, p4, CelticFile)
+    "Celtic FC", 0, 0, p4, CelticFile, "55.850407", "-4.205457")
 
     for stadium, stadiumData in Stadiums.items():
     
-        s = add_stadium(stadium, stadiumData["capacity"], stadiumData["postcode"], stadiumData["description"], stadiumData["hometeam"], stadiumData["TotalScore"], stadiumData["ReviewCount"], p2, stadiumData["photo"])
+        s = add_stadium(stadium, stadiumData["capacity"], stadiumData["postcode"], stadiumData["description"], stadiumData["hometeam"], stadiumData["TotalScore"], stadiumData["ReviewCount"], p2, stadiumData["photo"], stadiumData["latitude"], stadiumData["longitude"])
         
         print(s)
 
@@ -147,7 +151,7 @@ def generate_user():
     
     add_review(allianz_arena, p2, 5,5,5,"Best atmosphere in Germany.")
 
-def add_stadium(name, capacity, postcode, description, hometeam, totalScore, reviewCount, user, photo):
+def add_stadium(name, capacity, postcode, description, hometeam, totalScore, reviewCount, user, photo, latitude, longitude):
     print("This is inside the add stadium function\n",name, capacity, postcode, description, hometeam, totalScore, reviewCount, user)
 
     stadium = Stadium.objects.create(name=name, user=user)
@@ -160,7 +164,9 @@ def add_stadium(name, capacity, postcode, description, hometeam, totalScore, rev
     stadium.TotalScore = totalScore
     stadium.ReviewCount = reviewCount
     stadium.photo = photo
-
+    stadium.latitude = latitude
+    stadium.longitude = longitude
+	
     stadium.save()
 
     print(stadium,"-",stadium.user,"-",stadium.slug)
