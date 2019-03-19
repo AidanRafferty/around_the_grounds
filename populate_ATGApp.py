@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import os
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'around_the_grounds.settings')
 import django 
@@ -114,7 +115,7 @@ def generate_user():
     "Liverpool FC", 0, 0, p3, AnfieldFile)
 
     add_stadium("Allianz Arena", 75000, 
-    "80939 München, Germany", 
+    "80939 Munchen, Germany", 
     "The Allianz Arena replaced Munich’s old Olympiastadion. First plans for a new stadium were made in 1997, and even though the city of Munich initially preferred reconstructing the Olympiastadion, they eventually went ahead with the clubs’ proposal for an entire new stadium.", 
     "FC Bayern Munich", 0,0,p2, AllianzFile)
 
