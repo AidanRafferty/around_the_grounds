@@ -35,7 +35,7 @@ def generate_user():
 
     # Create sample users for the website and thier associated profiles
     # Create the first new user
-    new_user = User.objects.get_or_create(username = "ABC")[0]
+    new_user = User.objects.get_or_create(username = "Fitba99")[0]
     new_user.first_name="Joe"
     new_user.last_name="Bloggs"
     new_user.save()
@@ -43,7 +43,7 @@ def generate_user():
     p.save()
 
     # Create a second new user 
-    new_user2 = User.objects.get_or_create(username = "DEF")[0]
+    new_user2 = User.objects.get_or_create(username = "JohnS67")[0]
     new_user2.first_name="John"
     new_user2.last_name="Smith"
     new_user2.save()
@@ -63,6 +63,15 @@ def generate_user():
     new_user4.save()
     p4 = UserProfile.objects.create(user=new_user4)
     p4.save()
+
+    new_user5 = User.objects.get_or_create(username = "MarkyBoy23")[0]
+    new_user5.first_name="Mark"
+    new_user5.last_name="Reynolds"
+    new_user5.save()
+    p5 = UserProfile.objects.create(user=new_user5)
+    p5.save()
+
+
 
 
     # then a dictionary of stadiums for the users to add 
