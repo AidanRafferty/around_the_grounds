@@ -158,6 +158,21 @@ def like_category(request):
                 stad.likes = likes
                 stad.save()
     return HttpResponse(likes)
+	
+	
+@login_required
+def del_acc(request):
+	try:
+		
+		user = request.user
+		logout(request)
+		UserProfile.objects.get(user=user).delete()
+		print("Successfully deleted account.")
+	except UserProfile.DoesNotExist:
+		print("User does not exist.")
+	return render(request, "ATGApp/index.html");
+
+	
 
 @login_required
 def writeReview(request, stadium_name_slug):

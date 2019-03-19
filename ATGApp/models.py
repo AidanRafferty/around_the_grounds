@@ -42,7 +42,9 @@ class Stadium(models.Model):
     ReviewCount = models.IntegerField(default=0)
     TotalScore = models.IntegerField(default=0)
     averageScore = models.IntegerField(default=0)
-
+    latitude = models.CharField(max_length=100, default="1")
+    longitude = models.CharField(max_length=100, default="1")
+	
     def save(self, *args, **kwargs):
 
         # create a counter storing the number of review objects associated with this stadium being saved

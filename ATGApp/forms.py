@@ -40,7 +40,7 @@ class ReviewForm(forms.ModelForm):
     atmosphere = forms.IntegerField(help_text='Atmosphere:', widget=forms.RadioSelect(choices=Number_Choices))
     food = forms.IntegerField(help_text='Food:', widget=forms.RadioSelect(choices=Number_Choices))
     facilities = forms.IntegerField(help_text = "Facilities:", widget=forms.RadioSelect(choices=Number_Choices))
-    additionalInfo = forms.CharField(max_length=200, help_text="Please include any additonal information about your visit", required = False, widget = forms.TextInput(attrs={'class':'largeInput'}))
+    additionalInfo = forms.CharField(max_length=200, help_text="Please include any additonal information about your visit", required = False, widget = forms.TextInput(attrs={'class':'largeInput1'}))
     
     # The following fields are the hidden fields 
     totalScore = forms.IntegerField(widget = forms.HiddenInput(), initial=0)
