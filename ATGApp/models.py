@@ -23,7 +23,7 @@ from datetime import date
 # Create a Stadium table which will hold the data about each of the stadiums
 # added that can be reviewed
 class UserProfile(models.Model):
-    user = models.OneToOneField(User)
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
     picture = models.ImageField(upload_to='profile_images', blank=True)
 
     def __str__(self):
@@ -35,7 +35,7 @@ class Stadium(models.Model):
     name = models.CharField(max_length=50, unique=True, primary_key=True)
     photo = models.ImageField(upload_to='stadium_images', blank=True)
     capacity = models.IntegerField(default=0)
-    postcode = models.CharField(max_length=20)
+    postcode = models.CharField(max_length=30)
     description = models.CharField(max_length=500)
     homeTeam = models.CharField(max_length=55)
     slug = models.SlugField(unique=True)
