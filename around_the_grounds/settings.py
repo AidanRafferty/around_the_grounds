@@ -21,12 +21,9 @@ TEMPLATE_DIR = os.path.join(BASE_DIR, 'templates')
 # by using the same process to join the path as above
 STATIC_DIR = os.path.join(BASE_DIR, 'static')
 
-
 MEDIA_DIR = os.path.join(BASE_DIR, 'media')
 
 MEDIA_ROOT = MEDIA_DIR
-
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/

@@ -35,7 +35,7 @@ class Stadium(models.Model):
     name = models.CharField(max_length=50, unique=True, primary_key=True)
     photo = models.ImageField(upload_to='stadium_images', blank=True)
     capacity = models.IntegerField(default=0)
-    postcode = models.CharField(max_length=20)
+    postcode = models.CharField(max_length=30)
     description = models.CharField(max_length=500)
     homeTeam = models.CharField(max_length=55)
     slug = models.SlugField(unique=True)
@@ -98,7 +98,7 @@ class Review(models.Model):
     additionalInfo = models.CharField(max_length=200)
     date = models.DateTimeField(auto_now=True)
     totalScore = models.IntegerField(blank=True)
-        
+
     def save(self, *args, **kwargs):
 
         self.date = date.today()

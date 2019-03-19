@@ -5,8 +5,9 @@ django.setup()
 from django.contrib.auth.models import User
 from ATGApp.models import UserProfile, Stadium, Review
 
-def generate_user():
 
+def generate_user():
+    # Create sample users for the website and thier associated profiles
     # Create the first new user
     new_user = User.objects.get_or_create(username = "ABC")[0]
     new_user.first_name="Joe"
@@ -30,6 +31,13 @@ def generate_user():
     p3 = UserProfile.objects.create(user=new_user3)
     p3.save()
 
+    new_user4 = User.objects.get_or_create(username = "TartanArmy101")[0]
+    new_user4.first_name="Davie"
+    new_user4.last_name="Shakespeare"
+    new_user4.save()
+    p4 = UserProfile.objects.create(user=new_user4)
+    p4.save()
+
     # then a dictionary of stadiums for the users to add 
     Old_Trafford_Reviews = [
         {"atmosphere": 4,
@@ -41,7 +49,8 @@ def generate_user():
         "food": 5, 
         "facilities": 5,
         "additionalInfo":"Brilliant day",
-        }]
+        }
+        ]
     
     Camp_Nou_Reviews = [
         {"atmosphere": 5,
@@ -71,14 +80,17 @@ def generate_user():
         "TotalScore":30,
         "ReviewCount":2}}
 
+    add_stadium("Anfield", 54074, "L4 OTH", 
+    "Anfield is the home of Liverpool Football club since 1892 and is the sixth largest football staium in England. The stadium was originally owned by Merseyside rivals Everton until a club dispute led to the Toffees moving to their current ground Goodison Park", 
+    "Liverpool FC", 0, 0, p3)
 
-
-
+    add_stadium("Allianz Arena", 75000, 
+    "80939 München, Germany", 
+    "The Allianz Arena replaced Munich’s old Olympiastadion. First plans for a new stadium were made in 1997, and even though the city of Munich initially preferred reconstructing the Olympiastadion, they eventually went ahead with the clubs’ proposal for an entire new stadium.", 
+    "FC Bayern Munich", 0,0,p2)
 
     for stadium, stadiumData in Stadiums.items():
-        
-        print(stadiumData["capacity"])
-
+    
         s = add_stadium(stadium, stadiumData["capacity"], stadiumData["postcode"], stadiumData["description"], stadiumData["hometeam"], stadiumData["TotalScore"], stadiumData["ReviewCount"], p2)
         
         print(s)
@@ -87,20 +99,21 @@ def generate_user():
 
             add_review(s, p, review["atmosphere"], review["food"], review["facilities"], review["additionalInfo"])
 
-
-    add_stadium("Anfield", 54074, "L4 OTH", 
-    "Anfield is the home of Liverpool Football club since 1892 and is the sixth largest football staium in England. The stadium was originally owned by Merseyside rivals Everton until a club dispute led to the Toffees moving to their current ground Goodison Park", 
-    "Liverpool FC", 0, 0, p3)
-
-    
     for s in Stadium.objects.all():
 
         for r in Review.objects.all():
 
             print("- {0} - {1} ".format(str(s), str(r)))
 
-def add_stadium(name, capacity, postcode, description, hometeam, totalScore, reviewCount, user):
+    old_trafford = Stadium.objects.get(name="Old Trafford")
 
+    add_review(old_trafford, p4, 3,3,3,"Glory Glory Man United")
+    
+    allianz_arena = Stadium.objects.get(name="Allianz Arena")
+    
+    add_review(allianz_arena, p2, 5,5,5,"Best atmosphere in Germany.")
+
+def add_stadium(name, capacity, postcode, description, hometeam, totalScore, reviewCount, user):
     print("This is inside the add stadium function\n",name, capacity, postcode, description, hometeam, totalScore, reviewCount, user)
 
     stadium = Stadium.objects.create(name=name, user=user)
