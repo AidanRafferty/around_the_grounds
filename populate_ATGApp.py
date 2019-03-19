@@ -49,8 +49,7 @@ def generate_user():
         "food": 5, 
         "facilities": 5,
         "additionalInfo":"Brilliant day",
-        }
-        ]
+        }]
     
     Camp_Nou_Reviews = [
         {"atmosphere": 5,
@@ -88,6 +87,10 @@ def generate_user():
     "80939 München, Germany", 
     "The Allianz Arena replaced Munich’s old Olympiastadion. First plans for a new stadium were made in 1997, and even though the city of Munich initially preferred reconstructing the Olympiastadion, they eventually went ahead with the clubs’ proposal for an entire new stadium.", 
     "FC Bayern Munich", 0,0,p2)
+
+    add_stadium("Celtic Park", 60832, "G403RE", 
+    "Celtic Park, also known as paradise and Parkhead, is home to Celtic Football Club, the champions of the Scottish Permiership and the double treble winners.", 
+    "Celtic FC", 0, 0, p4)
 
     for stadium, stadiumData in Stadiums.items():
     

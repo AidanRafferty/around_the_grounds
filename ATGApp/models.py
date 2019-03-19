@@ -23,7 +23,7 @@ from datetime import date
 # Create a Stadium table which will hold the data about each of the stadiums
 # added that can be reviewed
 class UserProfile(models.Model):
-    user = models.OneToOneField(User)
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
     picture = models.ImageField(upload_to='profile_images', blank=True)
 
     def __str__(self):
@@ -98,7 +98,7 @@ class Review(models.Model):
     additionalInfo = models.CharField(max_length=200)
     date = models.DateTimeField(auto_now=True)
     totalScore = models.IntegerField(blank=True)
-
+        
     def save(self, *args, **kwargs):
 
         self.date = date.today()
