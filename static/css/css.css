@@ -71,7 +71,7 @@ input[type=submit]:hover, .button:hover, .reviewButton:hover{
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     position: fixed;
     /* right: -50%; */
-    top:15px;
+    top:20px;
     width:100%;
     z-index:+1;
     font-size: 16px;
@@ -89,7 +89,7 @@ input[type=submit]:hover, .button:hover, .reviewButton:hover{
     overflow: hidden;
     background-color:#333;
     position: fixed;
-    top: 40.5px;
+    top: 45.5px;
     width: 100%;
     }
 .menu li {
