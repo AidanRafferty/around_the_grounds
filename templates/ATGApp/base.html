@@ -20,9 +20,9 @@
     </head>
 
     <body>
-        <br/><br/><br/><br/>
+        <br/><br/><br/><br/><br/>
         <div class="menu">
-            <ul>
+            <ul margin: 0px;>
                 <li><a href="{% url 'index' %}">Home Page</a></li>
                 <li><a href="{% url 'stadiums' %}">Stadiums</a></li>
                 {% if user.is_authenticated %}
@@ -59,6 +59,7 @@
                     <li>Aidan Rafferty</li>
                     <li>Robbie Thomson</li>
                 </ul>
+                Designed to be viewed at 100% zoom.
             </p1>
         </div>
     </body>
