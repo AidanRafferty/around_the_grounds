@@ -5,7 +5,6 @@ body:not(.menu) {
     margin-bottom:4px;
     margin-top:4px;
     font-family: Arial, Helvetica, sans-serif;
-    top:
     }
 
 /**p.stadiumData {
@@ -316,7 +315,6 @@ margin-bottom: 15px;
       width: 100%;
     }
   }
-  
 #googleMap {
 margin-top: 10px;
 float:right;
