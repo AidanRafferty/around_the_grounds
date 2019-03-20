@@ -13,25 +13,29 @@ def generate_user():
     print("This is the file path for images below")
     print()
 
-
     image_path = os.path.normpath(os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'around_the_grounds', 'static', 'images'))
-
    
     print()
     print(str(image_path))
     print()
+
     old_trafford_image = open(os.path.join(image_path, 'OldTrafford.jpg'), 'rb')
     celtic_park_image = open(os.path.join(image_path, 'celtic-park.jpg'), 'rb')
     anfield_image = open(os.path.join(image_path, 'Anfield.jpg'), 'rb')
     allianz_image = open(os.path.join(image_path, 'Allianz.jpg'), 'rb')
-    nou_image = open(os.path.join(image_path, 'NouCamp.jpg'), 'rb')    
-    
+    nou_image = open(os.path.join(image_path, 'NouCamp.jpg'), 'rb')
+    bernabeu_image = open(os.path.join(image_path, 'Bernabeu.jpg'), 'rb')
+    dortmund_image = open(os.path.join(image_path, 'Dortmund.jpg'), 'rb')
+    juve_image = open(os.path.join(image_path, 'Juventus.jpg'), 'rb')
 
     OTFile = File(old_trafford_image, 'rb')
     CelticFile = File(celtic_park_image, 'rb')
     CampFile = File(nou_image, 'rb')
     AllianzFile = File(allianz_image, 'rb')
     AnfieldFile = File(anfield_image, 'rb')
+    BernabeuFile = File(bernabeu_image, 'rb')
+    DortmundFile = File(dortmund_image, 'rb')
+    JuveFile = File(juve_image, 'rb')
 
     # Create sample users for the website and thier associated profiles
     # Create the first new user
@@ -72,30 +76,28 @@ def generate_user():
     p5.save()
 
 
-
-
     # then a dictionary of stadiums for the users to add 
     Old_Trafford_Reviews = [
-        {"atmosphere": 4,
-        "food": 3, 
-        "facilities": 4,
+        {"atmosphere": 1,
+        "food": 5, 
+        "facilities": 3,
         "additionalInfo":"What a place",
         },
-        {"atmosphere": 5,
-        "food": 5, 
+        {"atmosphere": 3,
+        "food": 1, 
         "facilities": 5,
         "additionalInfo":"Brilliant day",
         }]
     
     Camp_Nou_Reviews = [
-        {"atmosphere": 5,
-        "food": 5, 
-        "facilities": 5,
+        {"atmosphere": 4,
+        "food": 4, 
+        "facilities": 3,
         "additionalInfo":"Incredible",
         },
-        {"atmosphere": 5,
-        "food": 5, 
-        "facilities": 5,
+        {"atmosphere": 2,
+        "food": 3, 
+        "facilities": 3,
         "additionalInfo":"Football's greatest",
         }]
 
@@ -130,11 +132,22 @@ def generate_user():
     add_stadium("Allianz Arena", 75000, 
     "80939 Munchen, Germany", 
     "The Allianz Arena replaced Munich’s old Olympiastadion. First plans for a new stadium were made in 1997, and even though the city of Munich initially preferred reconstructing the Olympiastadion, they eventually went ahead with the clubs’ proposal for an entire new stadium.", 
-    "FC Bayern Munich", 0,0,p2, AllianzFile, "48.219615", "11.624707")
+    "FC Bayern Munich", 0, 0, p2, AllianzFile, "48.219615", "11.624707")
 
     add_stadium("Celtic Park", 60832, "G403RE", 
     "Celtic Park, also known as paradise and Parkhead, is home to Celtic Football Club, the champions of the Scottish Permiership and the double treble winners.", 
-    "Celtic FC", 0, 0, p4, CelticFile, "55.850407", "-4.205457")
+    "Celtic FC", 0, 0, p2, CelticFile, "55.850407", "-4.205457")
+
+    add_stadium("Santiago Bernabeu", 81044, "28036 Madrid", "The Santiago Bernebeu is home to European giants Real Madrid since 1947. The stadium has hosted the final of the European Cup in 1957, 1969, 1980 and 2010.", 
+    "Real Madrid CF", 0, 0, p5, BernabeuFile, "40.454132", "-3.688259")
+
+    add_stadium("Signal Iduna Park", 81365, "Strobelallee 50, 44139 Dortmund", 
+    "The Signal Iduna Park, also known as the WestfieldStadion as it was named before 2005, was opened in 1974 and is one of the largest stadiums in Germany and Europe. The stadium is well known around the world for it's 'famous Yellow Wall', the largest free-standing football stand in Europe.",
+    "Borussia Dortmund", 0, 0, p3, DortmundFile, "51.4926", "7.4519")
+
+    add_stadium("Allianz Stadium", 41507, "Corso Gaetano Scirea, 50", 
+    "The Allianz Stadium was given it's name in 2017 after a sponsorship was formed between the stadium's owners and the company. The stadium was opened in 2011 and was built to replace the Stadio Delle Alpi which was home to Juventus from 1990.", 
+    "Juventus FC", 0, 0, p4, JuveFile, "45.1096", "7.6413")
 
     for stadium, stadiumData in Stadiums.items():
     
@@ -154,13 +167,40 @@ def generate_user():
 
     old_trafford = Stadium.objects.get(name="Old Trafford")
 
-    add_review(old_trafford, p4, 3,3,3,"Glory Glory Man United")
+    add_review(old_trafford, p4, 5,3,1,"Glory Glory Man United")
     
     allianz_arena = Stadium.objects.get(name="Allianz Arena")
     
-    add_review(allianz_arena, p2, 5,5,5,"Best atmosphere in Germany.")
+    add_review(allianz_arena, p2, 4,4,4,"Best atmosphere in Germany.")
+
+    celtic_park = Stadium.objects.get(name="Celtic Park")
+
+    add_review(celtic_park, p5, 5,3,2, "Best Atmosphere in the world.")
+
+    juventus_stadium = Stadium.objects.get(name ="Allianz Stadium")
+
+    add_review(juventus_stadium, p5, 3,3,2,"Facilities should be better, boring game 0-0.")
+
+    bernabeu = Stadium.objects.get(name ="Santiago Bernabeu")
+
+    add_review(bernabeu, p, 5,3,2,"Not the same since CR7 left")
+
+    anfield = Stadium.objects.get(name ="Anfield")
+
+    add_review(anfield, p3, 4,4,3, "Mon the reds")
+
+    NouCamp = Stadium.objects.get(name ="Camp Nou")
+
+    add_review(NouCamp, p4, 5,4,1, "Messi is not human")
+
+    add_review(NouCamp, p2, 4,4,4, "Total football")
+
+    dortmund = Stadium.objects.get(name="Signal Iduna Park")
+
+    add_review(dortmund, p, 5,2,2, "Yellow wall is different class")
 
 def add_stadium(name, capacity, postcode, description, hometeam, totalScore, reviewCount, user, photo, latitude, longitude):
+
     print("This is inside the add stadium function\n",name, capacity, postcode, description, hometeam, totalScore, reviewCount, user)
 
     stadium = Stadium.objects.create(name=name, user=user)

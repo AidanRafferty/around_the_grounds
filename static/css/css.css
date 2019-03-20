@@ -106,7 +106,7 @@ input[type=submit]:hover, .button:hover, .reviewButton:hover, .stadiumButton:hov
     position: fixed;
     top: 45px;
     width: 100%;
-	z-index:+1;
+	z-index:+40;
     }
 .menu li {
     float: left;
@@ -292,6 +292,7 @@ div.addS{
     margin:10px;
     width:100%;
 }
+
 .stadiumImage{
 
 float: right;
@@ -315,6 +316,7 @@ margin-bottom: 15px;
       width: 100%;
     }
   }
+  
 #googleMap {
 margin-top: 10px;
 float:right;
