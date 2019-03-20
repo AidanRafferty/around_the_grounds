@@ -9,6 +9,8 @@ class addStadiumForm(forms.ModelForm):
     postcode = forms.CharField(Stadium._meta.get_field("postcode").max_length, help_text="Please enter the Postcode of the Stadium.")
     homeTeam = forms.CharField(Stadium._meta.get_field("homeTeam").max_length, help_text="What is the home team that plays at the Stadium.")
     description = forms.CharField(Stadium._meta.get_field("description").max_length, help_text="Please give a small description of the Stadium. (MAX 500 characters)", widget = forms.TextInput(attrs={'class':'largeInput'}))
+    latitude = forms.CharField(Stadium._meta.get_field("latitude").max_length, help_text="Please enter the Latitude")
+    longitude = forms.CharField(Stadium._meta.get_field("longitude").max_length, help_text="Please enter the Longitude")
     #image input
     photo = forms.ImageField(help_text = "Upload a picture of the stadium ")
     
@@ -23,7 +25,7 @@ class addStadiumForm(forms.ModelForm):
     class Meta:
         # Provide an association between the ModelForm and a model
         model = Stadium
-        fields = ('name','capacity', 'postcode', 'homeTeam', 'description','photo')
+        fields = ('name', 'homeTeam', 'capacity', 'description', 'postcode', 'latitude', 'longitude', 'photo')
 
 
 class ReviewForm(forms.ModelForm):

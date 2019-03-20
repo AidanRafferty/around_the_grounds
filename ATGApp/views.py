@@ -142,7 +142,13 @@ def account(request):
         reviews = Review.objects.order_by('-date').filter(user=user_profile)
         for review in reviews:
             print(review.stadium)
-        context_dict = {'reviews':reviews}
+        # context_dict = {'reviews':reviews}
+        
+        stadiums = Stadium.objects.order_by('name').filter(user=user_profile)
+        for stadium in stadiums:
+            print(stadium.name)
+        context_dict = {'stadiums':stadiums, 'reviews':reviews}
+
     else:
         context_dict = {}
     return render(request,'ATGApp/myAccount.html', context = context_dict)

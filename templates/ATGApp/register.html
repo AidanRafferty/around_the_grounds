@@ -9,9 +9,8 @@
     <h1>Register for Around the Grounds</h1>
 
     {% if registered %}
-        <h2>Thank you for registering!</h2><br/>
-        <a href="{% url 'index' %}">Return to the homepage.</a><br/>
-        <p>Or go to the <a href="{% url 'index' %}">Stadium Page</a> to pick a stadium to write a review on.</p>
+        <h2>Thank you for registering!</h2>
+        <a class ="reviewButton" href="{% url 'login' %}">Now Log In with registered details.</a>
    
     {% else %}
         <h2>Register for an account here!</h2>

@@ -8,10 +8,22 @@
 {% block body_block %}
 	<h1>My Account</h1>
         
-    <div>
-        {% if reviews %}
+    <div class="t">
+		{% if stadiums %}
+			<h2>The stadiums you have added are as follows:</h2>
+			<ul>
+				{% for stadium in stadiums %}
+				<li>{{stadium.name}}</li>
+				{% endfor %}
+			</ul>
+		{% else %}
+			<h2>You haven't added any stadiums.</h2>
+		{% endif %}
+
+
+		{% if reviews %}
 		<h2>These are the reviews you have made:</h2>
-		<table id="userReviews">
+			<table id="userReviews">
 					<tr>
 						<th>Stadium</th>
 						<th>Atmosphere</th>
@@ -19,25 +31,23 @@
 						<th>Facilities</th>
 						<th>Review made on</th>
 						<th>Additional Information</th>
-					</tr>
-			{% for review in reviews%}
-					</tr>
-							<td>{{review.stadium}}</td>
-							<td>{{review.atmosphere}} / 5 </td>
-							<td>{{review.food}} / 5 </td>
-							<td>{{review.facilities}} / 5 </td>
-							<td>{{review.date}}</td>
-							{% if review.additionalInfo %}
-								<td>{{review.additionalInfo}}</td>
-							{% else %}
-								<td>No extra comments were added to the review.</td>
-							{% endif %}
-						
-					</tr>
-					{% endfor %}
-				</table>
-			
 
+					</tr>
+				{% for review in reviews %}
+					</tr>
+						<td>{{review.stadium}}</td>
+						<td>{{review.atmosphere}} / 5 </td>
+						<td>{{review.food}} / 5 </td>
+						<td>{{review.facilities}} / 5 </td>
+						<td>{{review.date}}</td>
+						{% if review.additionalInfo %}
+							<td>{{review.additionalInfo}}</td>
+						{% else %}
+							<td>No extra comments were added to the review.</td>
+						{% endif %}	
+						</tr>
+				{% endfor %}
+			</table>
         {% else %}
             <h2>A review has yet to be made on a stadium</h2>
         {% endif %}

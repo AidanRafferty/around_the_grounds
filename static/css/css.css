@@ -59,9 +59,23 @@ input[type=submit], .button {
     display: inline-block;
     }
 
+
+    .stadiumButton{
+        /* border-radius:8px; */
+        border-color:rgb(203, 255, 203);
+        color:white;
+        text-align: center;
+        background-color: #333;
+        font-size: 16px;
+        cursor: pointer;
+        padding: 20px;
+        text-decoration: none;
+        display: inline-block;
+        }
+
 /* buttons END */
 
-input[type=submit]:hover, .button:hover, .reviewButton:hover{
+input[type=submit]:hover, .button:hover, .reviewButton:hover, .stadiumButton:hover{
     background-color: black;
     color: rgb(203, 255, 203);
     cursor: pointer; 
@@ -139,8 +153,10 @@ div.gallery img {
 }
 
 div.stadName {
-    padding:  10px 10px 0px 10px;
+    padding:  15px 10px 0px 10px;
     text-align: center;
+    font-size: 20px;
+    margin-bottom: -15px;
 }
 
 * {
@@ -256,8 +272,26 @@ div.s{
     padding:15px 15px 15px 15px;
     overflow:auto;
     margin:10px;
+    border:1px solid black;
+    border-radius: 8px;
+
+}
+div.t{
+    font-family:Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    padding:15px 15px 15px 15px;
+    overflow:auto;
+    margin:10px;
+    width:100%;
 }
 
+div.addS{
+    font-family:Arial, Helvetica, sans-serif;
+    padding:5px 15px 15px 15px;
+    overflow:auto;
+    margin:10px;
+    width:100%;
+}
 .stadiumImage{
 
 float: right;

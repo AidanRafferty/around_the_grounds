@@ -22,28 +22,24 @@
 {% block body_block %}
     <h1>Add Stadium</h1>
 
-	</br>
-	</br>
-	<div class="map" id="googleMap" style="width:30%px;height:20%;"></div>
-    <form novalidate id="addStadium_form" method="post" action="{% url 'add_stadium' %}" enctype="multipart/form-data">
-        {% csrf_token %}
-        <!-- Stadium Name: <input type="text" name="stadiumName" value="" size="50"/>
-        <br/>
-        Postcode: <input type="text" name="postcode" value="" size="10"/>
-        <br/>
-        Capacity: <input type="number" name="capacity" min="0" max="114000"/> -->
-        {% for hidden in form.hidden_fields %}
-            {{ hidden }}
-        {% endfor %}
+	
+    <div class="map" id="googleMap" style="width:30%px;height:20%;"></div>
+    <div class="t">Enter the following details of your desired stadium.<br/><br/>Please find the correct Latitude and Logitude of the stadium on <a href="https://www.google.com/maps">Google Maps</a> so it can be shown on the map.</div>
+    <div class="addS">
+        <form novalidate id="addStadium_form" method="post" action="{% url 'add_stadium' %}" enctype="multipart/form-data">
+            {% csrf_token %}
+            {% for hidden in form.hidden_fields %}
+                {{ hidden }}
+            {% endfor %}
 
-        {% for field in form.visible_fields %}
-            <label class=helpText>{{ field.errors }}</label>
-            <label class=helpText>{{ field.help_text }}</label>
-            {{ field }}
-            <br/><br/>
-        {% endfor %}
-
-        <input type="submit" value="Add Stadium" value="addStadium">
-        <!-- <input type="file" name="stadiumPic" accept="image/png, image/jpeg"> -->
-    </form>
+            {% for field in form.visible_fields %}
+                <label class=helpText>{{ field.errors }}</label>
+                <label class=helpText>{{ field.help_text }}</label>
+                {{ field }}
+                <br/><br/>
+            {% endfor %}
+            <input type="submit" value="Add Stadium" value="addStadium">
+            <!-- <input type="file" name="stadiumPic" accept="image/png, image/jpeg"> -->
+        </form>
+    </div>
 {% endblock %}
