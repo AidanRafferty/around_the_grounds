@@ -9,6 +9,7 @@ import os
 from django.core.files.uploadedfile import SimpleUploadedFile
 from django.test import Client
 
+#Test
 def create_user():
     # Create a user
     user = User.objects.get_or_create(username="testuser", password="test1234",
