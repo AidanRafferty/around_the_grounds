@@ -9,8 +9,8 @@ class addStadiumForm(forms.ModelForm):
     postcode = forms.CharField(Stadium._meta.get_field("postcode").max_length, help_text="Please enter the Postcode of the Stadium.")
     homeTeam = forms.CharField(Stadium._meta.get_field("homeTeam").max_length, help_text="What is the home team that plays at the Stadium.")
     description = forms.CharField(Stadium._meta.get_field("description").max_length, help_text="Please give a small description of the Stadium. (MAX 500 characters)", widget = forms.TextInput(attrs={'class':'largeInput'}))
-    latitude = forms.CharField(Stadium._meta.get_field("latitude").max_length, help_text="Please enter the Latitude")
-    longitude = forms.CharField(Stadium._meta.get_field("longitude").max_length, help_text="Please enter the Longitude")
+    latitude = forms.CharField(widget=forms.TextInput(attrs={'id':'latitude', 'type':'hidden'}), max_length=Stadium._meta.get_field("latitude").max_length)
+    longitude = forms.CharField(widget=forms.TextInput(attrs={'id':'longitude', 'type':'hidden'}), max_length=Stadium._meta.get_field("longitude").max_length)
     #image input
     photo = forms.ImageField(help_text = "Upload a picture of the stadium ")
     

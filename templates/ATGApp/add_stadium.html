@@ -9,6 +9,17 @@
 			zoom:2,
 		};
 		var map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
+		var marker = new google.maps.Marker();
+		map.addListener('click', function(e) {
+			marker.setMap(null);
+			marker = new google.maps.Marker({
+				position: e.latLng,
+				map: map
+			});
+		map.panTo(marker.getPosition());
+		document.getElementById("latitude").value = marker.getPosition().lat();
+		document.getElementById("longitude").value = marker.getPosition().lng();
+		});	
 	});
 </script>
 <script defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAHUm2sdbJm3psdYePJSbmzFT4T80EPKe0&callback=googleMap"></script>
@@ -23,8 +34,8 @@
     <h1>Add Stadium</h1>
 
 	
-    <div class="map" id="googleMap" style="width:30%px;height:20%;"></div>
-    <div class="t">Enter the following details of your desired stadium.<br/><br/>Please find the correct Latitude and Logitude of the stadium on <a href="https://www.google.com/maps">Google Maps</a> so it can be shown on the map.</div>
+    <div id="googleMap"></div>
+    <div class="t">Enter the following details of your desired stadium.<br/><br/>Please find the stadium on the map and set a marker on it.</div>
     <div class="addS">
         <form novalidate id="addStadium_form" method="post" action="{% url 'add_stadium' %}" enctype="multipart/form-data">
             {% csrf_token %}
@@ -35,7 +46,7 @@
             {% for field in form.visible_fields %}
                 <label class=helpText>{{ field.errors }}</label>
                 <label class=helpText>{{ field.help_text }}</label>
-                {{ field }}
+				{{ field }}
                 <br/><br/>
             {% endfor %}
             <input type="submit" value="Add Stadium" value="addStadium">
