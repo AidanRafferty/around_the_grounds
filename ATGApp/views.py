@@ -3,8 +3,9 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.core.urlresolvers import reverse
-from ATGApp.models import Review, Stadium, UserProfile
+from ATGApp.models import Review, Stadium, UserProfile, User
 from ATGApp.forms import UserForm, UserProfileForm, addStadiumForm, ReviewForm
+
 
 def index(request):
     #Returns information on highest rated stadium
@@ -167,6 +168,7 @@ def del_acc(request):
 		user = request.user
 		logout(request)
 		UserProfile.objects.get(user=user).delete()
+		user.delete()
 		print("Successfully deleted account.")
 	except UserProfile.DoesNotExist:
 		print("User does not exist.")

@@ -14,5 +14,5 @@ urlpatterns = [
     url(r'^chosenStadium/(?P<stadium_name_slug>[\w\-]+)/$',views.chosenStadium, name='chosenStadium'),
     url(r'^writeReview/(?P<stadium_name_slug>[\w\-]+)/$',views.writeReview, name='writeReview'),
     url(r'^logout/$', views.user_logout, name='logout'),
-	url(r'^del_acc/$', views.del_acc, name='del_acc'),
+    url(r'^del_acc/$', views.del_acc, name='del_acc'),
 ]
