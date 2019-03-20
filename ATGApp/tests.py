@@ -41,13 +41,13 @@ def setUp(self):
 
 class generalTests(TestCase):
     def test_login(self):
-      client = Client()
-      create_user()
-      login = self.client.login(username="testuser",password="test1234")
-      response = self.client.get("http://127.0.0.1:8000/ATGApp/")
-      self.assertTrue(login)
-      self.assertNotIn(str(response.content),"Log in")
-      self.assertNotIn(str(response.content),"Sign Up")
+        client = Client()
+        create_user()
+        login = self.client.login(username="testuser",password="test1234")
+        response = self.client.get("http://127.0.0.1:8000/ATGApp/")
+        self.assertTrue(login)
+        self.assertNotIn(str(response.content),"Log in")
+        self.assertNotIn(str(response.content),"Sign Up")
 
 class StadiumTests(TestCase):
 
@@ -59,44 +59,55 @@ class StadiumTests(TestCase):
         self.assertEqual(stadium.slug,"best-stadium-in-the-world")
 
     def test_add_a_stadium(self):
-      print("This is the path of the image ")
 
-      image_path = os.path.normpath(os.path.join(os.path.abspath(__file__), 'static', 'images'))
-      
-      print(image_path)
+        print("This is the path of the image ")
         
-      #image = open(os.path.join(image_path, 'OldTrafford.jpg'), 'rb')
-      client = Client()
-      
-      #Create a user and log in
-      create_user()
-      login = self.client.login(username="testuser",password="test1234")
-      
-      #Post a stadium to the add stadium page
-      response = self.client.post('http://127.0.0.1:8000/ATGApp/add_stadium/',{'name':"Test",'capacity':500,'postcode':"G61 3QG",'homeTeam':"Home FC",'description':"Decent","photo":image,'TotalScore':0,'ReviewCount':0,'averageScore':0,'Review_count':0,'total_Score':0,'average':0})
+        # done
+        image_path = os.path.normpath(os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))), 'around_the_grounds', 'static', 'images'))
 
-      #Check that the post worked
-      self.assertEqual(response.status_code, 200)
-      self.assertContains(response, 'Test')
-
-class ReviewTests(TestCase):
-    image_path = os.path.normpath(os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))),'around_the_grounds', 'static', 'images'))
-    print("This is the path")
-    print(image_path)
-    
-    image = open(os.path.join(image_path, 'OldTrafford.jpg'), 'rb')
-    
-    def test_add_a_review(self):
+        image = open(os.path.join(image_path, 'OldTrafford.jpg'), 'rb')
+        
+        print(image_path)
+        
+        #image = open(os.path.join(image_path, 'OldTrafford.jpg'), 'rb')
+        client = Client()
+      
         #Create a user and log in
         create_user()
+        
         login = self.client.login(username="testuser",password="test1234")
       
         #Post a stadium to the add stadium page
-        response = self.client.post('http://127.0.0.1:8000/ATGApp/add_stadium/',{'name':"Test",'capacity':500,'postcode':"G61 3QG",'homeTeam':"Home FC",'description':"Decent","photo":image,'TotalScore':0,'ReviewCount':0,'averageScore':0,'Review_count':0,'total_Score':0,'average':0})
+        response = self.client.post('http://127.0.0.1:8000/ATGApp/add_stadium/',{'name':"Test",'capacity':500,'postcode':"G61 3QG",'homeTeam':"Home FC",'description':"Decent","photo":image,'TotalScore':0,'ReviewCount':0,'averageScore':0,'Review_count':0,'total_Score':0,'average':0,'latitude':0,'longitude':0})
+
+        #Check that the post worked
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, 'Test')
+
+class ReviewTests(TestCase):
+  
+    def test_add_a_review(self):
+       
+        # changed 
+        image_path = os.path.normpath(os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))), 'around_the_grounds', 'static', 'images'))
+    
+        print("This is the path")
+            
+        print(image_path)
+        
+        image = open(os.path.join(image_path, 'OldTrafford.jpg'), 'rb')
+            
+            #Create a user and log in
+        create_user()
+
+        login = self.client.login(username="testuser",password="test1234")
+            
+        #Post a stadium to the add stadium page
+        response = self.client.post('http://127.0.0.1:8000/ATGApp/add_stadium/',{'name':"Test",'capacity':500,'postcode':"G61 3QG",'homeTeam':"Home FC",'description':"Decent","photo":image,'TotalScore':0,'ReviewCount':0,'averageScore':0,'Review_count':0,'total_Score':0,'average':0,'latitude':0,'longitude':0})
 
         #Post a review to the test stadium page
-        reponse = self.client.post('http://127.0.0.1:8000/ATGApp/writeReview/test/',{'atmosphere':0,'food':0,'facilities':0,'additionalInfo':"TestReview",'date':str(datetime.datetime.now()),'totalScore':0})
-      
+        reponse = self.client.post('http://127.0.0.1:8000/ATGApp/writeReview/test/',{'atmosphere':0,'food':0,'facilities':0,'additionalInfo':"TestReview",'date':str(datetime.datetime.now()),'totalScore':0,})
+            
         #Set response to test stadium page
         response = self.client.get("http://127.0.0.1:8000/ATGApp/chosenStadium/test/")
 
@@ -108,13 +119,17 @@ class MyAccountTests(TestCase):
     def test_account_page(self):
         #Create a user and log in
         create_user()
+        
         login = self.client.login(username="testuser",password="test1234")
-      
+        
+        image_path = os.path.normpath(os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))), 'around_the_grounds', 'static', 'images'))
+    
+        image = open(os.path.join(image_path, 'OldTrafford.jpg'), 'rb')
         #Post a stadium to the add stadium page
-        response = self.client.post('http://127.0.0.1:8000/ATGApp/add_stadium/',{'name':"Test",'capacity':500,'postcode':"G61 3QG",'homeTeam':"Home FC",'description':"Decent","photo":image,'TotalScore':0,'ReviewCount':0,'averageScore':0,'Review_count':0,'total_Score':0,'average':0})
+        response = self.client.post('http://127.0.0.1:8000/ATGApp/add_stadium/',{'name':"Test",'capacity':500,'postcode':"G61 3QG",'homeTeam':"Home FC",'description':"Decent","photo":image,'TotalScore':0,'ReviewCount':0,'averageScore':0,'Review_count':0,'total_Score':0,'average':0,'latitude':0,'longitude':0})
 
         #Post a review to the test stadium page
-        reponse = self.client.post('http://127.0.0.1:8000/ATGApp/writeReview/test/',{'atmosphere':0,'food':0,'facilities':0,'additionalInfo':"TestReview",'date':str(datetime.datetime.now()),'totalScore':0})
+        response = self.client.post('http://127.0.0.1:8000/ATGApp/writeReview/test/',{'atmosphere':0,'food':0,'facilities':0,'additionalInfo':"TestReview",'date':str(datetime.datetime.now()),'totalScore':0})
       
         #Set response to test user page
         response = self.client.get("http://127.0.0.1:8000/ATGApp/account/")
