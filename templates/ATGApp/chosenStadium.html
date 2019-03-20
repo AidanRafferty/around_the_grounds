@@ -17,6 +17,7 @@
 	});
 </script>
 <script defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAHUm2sdbJm3psdYePJSbmzFT4T80EPKe0&callback=googleMap"></script>
+<script src="{% static 'js/sortTable.js' %}"></script>
 {% endblock %}
 
 {% block title_block %}
@@ -66,14 +67,14 @@
 		</div>
 		
         {% if reviews %}
-		<p><button onclick="sortTable()">Sort</button></p>
+		<p> Click on the corresponding header to sort reviews by atmosphere, food and facilities </p>
 			</br>
             <table id="reviews">
                 <tr>
                     <th>Reviewer</th>
-                    <th>Atmosphere</th>
-                    <th>Food</th>
-                    <th>Facilities</th>
+                    <th onclick = "sortTable(1)">Atmosphere</th>
+                    <th onclick = "sortTable(2)">Food</th>
+                    <th onclick = "sortTable(3)">Facilities</th>
                     <th>Additional Information</th>
 					<th>Review made on</th>
                 </tr>
