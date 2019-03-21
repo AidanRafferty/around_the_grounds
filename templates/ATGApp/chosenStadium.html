@@ -27,17 +27,9 @@
 
 {% block body_block %}
 	
-	
-	
     {% if stadium %}
 	
-       
-		
         <h1>{{ stadium.name }}</h1><br/>
-		
-		
-        
-		
 		
 		<div class="s">
 		
@@ -48,8 +40,9 @@
 		Capacity - {{ stadium.capacity}}</br><br/>
 		
 		{{ stadium.description }}</br><br/>
-		
-        Average Score - {{ stadium.averageScore }}
+        
+        Average Score -  {{ stadium.averageScore }}
+        
 		<br/><br/>
 		Posted by {{stadium.user}}
 		</br></br><br>
@@ -62,8 +55,6 @@
 			If you do not have an account with us, register <a href="{% url 'register' %}"> here</a>.
 		
 		{% endif %}
-
-	
 		</div>
 		
         {% if reviews %}

@@ -34,23 +34,35 @@
     <h1>Add Stadium</h1>
 
 	
-    <div id="googleMap"></div>
-    <div class="t">Enter the following details of your desired stadium.<br/><br/>Please find the stadium on the map and set a marker on it.</div>
-    <div class="addS">
-        <form novalidate id="addStadium_form" method="post" action="{% url 'add_stadium' %}" enctype="multipart/form-data">
-            {% csrf_token %}
-            {% for hidden in form.hidden_fields %}
-                {{ hidden }}
-            {% endfor %}
+    <!-- <div id="googleMap"></div> -->
+    <div class="t">Enter the following details of your desired stadium:</div>
+    <table>
+        <tr>
+            <td>
+                <div class="addS">
+                    <form novalidate id="addStadium_form" method="post" action="{% url 'add_stadium' %}" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {% for hidden in form.hidden_fields %}
+                            {{ hidden }}
+                        {% endfor %}
 
-            {% for field in form.visible_fields %}
-                <label class=helpText>{{ field.errors }}</label>
-                <label class=helpText>{{ field.help_text }}</label>
-				{{ field }}
-                <br/><br/>
-            {% endfor %}
-            <input type="submit" value="Add Stadium" value="addStadium">
-            <!-- <input type="file" name="stadiumPic" accept="image/png, image/jpeg"> -->
-        </form>
-    </div>
+                        {% for field in form.visible_fields %}
+                            <label class=helpText>{{ field.errors }}</label>
+                            <label class=helpText>{{ field.help_text }}</label><br/>
+                            {{ field }}
+                            <br/><br/>
+                        {% endfor %}
+                        Remember finding the stadium on the map and leave a pointer on it by clicking on it--><br/>
+                        If you dont know where it is you can find it first on <a href="https://www.google.com/maps">Google Maps</a> to help you!<br/><br/>
+                        <input type="submit" value="Add Stadium" value="addStadium">
+                        <!-- <input type="file" name="stadiumPic" accept="image/png, image/jpeg"> -->
+                    </form>
+                </div>
+            <td>
+
+            </td>
+                <div id="googleMap"></div>
+            </td>
+        </tr>
+    </table>
 {% endblock %}
