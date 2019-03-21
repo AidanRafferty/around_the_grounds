@@ -14,10 +14,10 @@
 			<h1>{{user_profile}}</h1>
 			<div>
 				<div class="s">
-						{% if user_profile.picture.url %}
+						{% if user_profile.picture %}
 							<img class ="stadiumImage" src="{{ user_profile.picture.url }}">
 						{% else %}
-							<h2 color:Red >You Dont Have A Picture On On Your Profile</h2>
+							<h2 style ="color:Red" >You Dont Have A Picture On On Your Profile</h2>
 						{% endif %}
 						<h2>Hi, {{ user.username }}<br/><br/>Email: {{ user_profile.user.email }}</h2>
 				</div>
