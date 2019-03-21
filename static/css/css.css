@@ -270,9 +270,10 @@ div.s{
     font-size: 20px;
     padding:15px 15px 15px 15px;
     overflow:auto;
-    margin:10px;
+    margin:auto;
     border:1px solid black;
     border-radius: 8px;
+	width:98%;
 
 }
 div.t{
@@ -280,7 +281,7 @@ div.t{
     font-size: 20px;
     padding:15px 15px 15px 15px;
     overflow:auto;
-    margin:10px;
+    margin:auto;
     width:100%;
 }
 
