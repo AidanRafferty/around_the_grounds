@@ -106,7 +106,7 @@ def generate_user():
     {"Reviews": Old_Trafford_Reviews,
     "capacity":76000,
     "postcode":"M16ORA",
-    "description": "The theatre of dreams",
+    "description": "Old Trafford was opened in 1910 and has been home to Premier League side Manchester United FC ever since. The ground had to undergo major renovation after the Second World War air raids left the stadium seriously damaged. This took a rebuilding job of 8 years and during this time Manchester United played their games at Maine Road, Manchester City’s ground at the time. Old Trafford was one of the venues during the 1966 World Cup and hosted 3 group stage matches in Euro 1996.  The stadium has recorded a record attendance of 76,962 in a match between Wolverhampton Wanderers and Grimsby Town.",
     "hometeam": "Manchester United FC",
     "TotalScore": 26,
     "ReviewCount":2,
@@ -117,7 +117,7 @@ def generate_user():
         "Camp Nou": {"Reviews": Camp_Nou_Reviews,
         "capacity": 99354,
         "postcode":"08028 Barcelona",
-        "description": "The home of Barcelona Football Club",
+        "description": "The Camp Nou was built between 1954 and 1957 and officially opened its doors in 1957 in a game between the club and some players from Warsaw. The stadium was first named Estadi del FC Barcelona but was soon renamed Camp Nou. The stadium originally had some standing areas which were turned into seats in the 1990s. In order to maintain the enormous capacity, the club decided to lower the pitch. The stadium has hosted finals of the European Cup on 2 occasions and has been home to some of the worlds greatest players including Johan Cruyff, Diego Maradona and Lionel Messi.",
         "hometeam": "FC Barcelona",
         "TotalScore":30,
         "ReviewCount":2,
@@ -126,27 +126,28 @@ def generate_user():
 		"longitude": "2.122648"}}
 
     add_stadium("Anfield", 54074, "L4 OTH", 
-    "Anfield is the home of Liverpool Football club since 1892 and is the sixth largest football staium in England. The stadium was originally owned by Merseyside rivals Everton until a club dispute led to the Toffees moving to their current ground Goodison Park", 
+    "Anfield is the home of Liverpool Football club since 1892 and is the sixth largest football staium in England. The stadium was originally owned by Merseyside rivals Everton until a dispute between the clubs led to the Toffees moving to their current ground Goodison Park. The record attendance of 61,905 for the ground was set in 1952 in game against Wolverhampton Wanderers.", 
     "Liverpool FC", 0, 0, p3, AnfieldFile, "53.431175","-2.961002")
 
     add_stadium("Allianz Arena", 75000, 
     "80939 Munchen, Germany", 
-    "The Allianz Arena replaced Munich’s old Olympiastadion. First plans for a new stadium were made in 1997, and even though the city of Munich initially preferred reconstructing the Olympiastadion, they eventually went ahead with the clubs’ proposal for an entire new stadium.", 
+    "The Allianz Arena replaced Munich’s old Olympiastadion. The club made plans for a new stadium back in 1997, and even though the city of Munich initially preferred the idea of modernising the Olympiastadion, they eventually went ahead with the clubs’ proposal for an entire new stadium. The Allianz Arena boasts an average attendance of 71,000, bettered only by the Camp Nou, Old Trafford and Singal Iduna Park.", 
     "FC Bayern Munich", 0, 0, p2, AllianzFile, "48.219615", "11.624707")
 
     add_stadium("Celtic Park", 60832, "G403RE", 
-    "Celtic Park, also known as paradise and Parkhead, is home to Celtic Football Club, the champions of the Scottish Permiership and the double treble winners.", 
+    "Celtic Park, also known as paradise and Parkhead, is home to Celtic Football Club, the champions of the Scottish Permiership and the double treble winners. The stadium was opened in 1892 and in 1898 a new stand was built which was the first 2 tier stand at a football gorund which could fit 50,000 fans. The record attendance for Celtic park is 92,000.", 
     "Celtic FC", 0, 0, p2, CelticFile, "55.850407", "-4.205457")
 
-    add_stadium("Santiago Bernabeu", 81044, "28036 Madrid", "The Santiago Bernebeu is home to European giants Real Madrid since 1947. The stadium has hosted the final of the European Cup in 1957, 1969, 1980 and 2010.", 
+    add_stadium("Santiago Bernabeu", 81044, "28036 Madrid", 
+    "The Santiago Bernabeu has been the home of European Giants Real Madrid since 1947. The arena has hosted many major finals including the European Cup final in 1957, 1969, and 2010. Los blancos have played at the stadium since 1947 and was named after Santiago Bernabeu, the club president at the time. The stadium at one time could fit 125,000 fans but was reduced to its current capacity after many renovations that took place in the 1900s.", 
     "Real Madrid CF", 0, 0, p5, BernabeuFile, "40.454132", "-3.688259")
 
     add_stadium("Signal Iduna Park", 81365, "Strobelallee 50, 44139 Dortmund", 
-    "The Signal Iduna Park, also known as the WestfieldStadion as it was named before 2005, was opened in 1974 and is one of the largest stadiums in Germany and Europe. The stadium is well known around the world for it's 'famous Yellow Wall', the largest free-standing football stand in Europe.",
+    "The Signal Iduna Park, formerly known as the WestfieldStadion, was opened in 1974 and is one of the largest football grounds in Germany. The stadium is well known around the world for its famous “Yellow Wall”, the largest free-standing football stand in Europe. The Signal Iduna Park became the first stadium ever to record an average attendance of over 81,000 in the 2015/16 season and averaged 79,496 last season, the best in Germany. The capacity of the Signal Iduna Park is reduced by almost 16,000 for non-domestic matches to meet UEFA and FIFA guidelines. ",
     "Borussia Dortmund", 0, 0, p3, DortmundFile, "51.4926", "7.4519")
 
     add_stadium("Allianz Stadium", 41507, "Corso Gaetano Scirea, 50", 
-    "The Allianz Stadium was given it's name in 2017 after a sponsorship was formed between the stadium's owners and the company. The stadium was opened in 2011 and was built to replace the Stadio Delle Alpi which was home to Juventus from 1990.", 
+    "The Allianz Stadium is located in Turin, Italy and is home to Italian giants Juventus since 2011.  It earned its new name in 2017 after a sponsorship was formed between the insurance company and the stadium’s owners. The stadium was opened in 2011 and was built to replace the Stadio Delle Alpi, which only became home to the club in 1990 and struggled to gain fan approval due to the distance between the park and the stands which caused a lack of atmosphere.", 
     "Juventus FC", 0, 0, p4, JuveFile, "45.1096", "7.6413")
 
     for stadium, stadiumData in Stadiums.items():
