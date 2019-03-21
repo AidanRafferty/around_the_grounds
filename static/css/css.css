@@ -354,3 +354,13 @@ div.profilePic{
     overflow:auto;
 }
 
+/* link for highest rated stadium */
+.highestRating{
+	color:black;
+	text-decoration:none;
+}
+
+.noProfilePicMessage{
+	color:red;
+	font-size:20px;
+}

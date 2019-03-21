@@ -16,7 +16,7 @@
 	<div>
         <h2>About the site</h2>
         <p>
-            This site has been created so that avid football suporters and newcomers alike can share their experiences of the football matches they have attended.
+            This site has been created so that avid football supporters and newcomers alike can share their experiences of the football stadiums they have visited.
             <br/>
             <br/>Without an account, you will be able to see information about the Stadiums and the reviews people have left about their experiences there.
             <br/>However if you want to leave your own review on a stadium, you will need to register an account with the site.
@@ -31,7 +31,7 @@
 			
 			<div id="div1"><h2>
 				
-				{{ stad }}
+				<a class="highestRating" href="{% url 'chosenStadium' stad.slug %}" >{{ stad }}</a>
 			
 			</h2></div>
 		
