@@ -137,6 +137,7 @@ def register(request):
 def account(request):
 
     if request.user.is_authenticated():
+        
         user = request.user
         user_profile = UserProfile.objects.get(user=user)
         reviews = Review.objects.order_by('-date').filter(user=user_profile)
@@ -147,7 +148,8 @@ def account(request):
         stadiums = Stadium.objects.order_by('name').filter(user=user_profile)
         for stadium in stadiums:
             print(stadium.name)
-        context_dict = {'stadiums':stadiums, 'reviews':reviews}
+
+        context_dict = {'stadiums':stadiums, 'reviews':reviews, 'user_profile':user_profile}
 
     else:
         context_dict = {}
