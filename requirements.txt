@@ -1,5 +1,5 @@
 certifi==2018.11.29
-Django==1.11.17
+Django==1.11.28
 Pillow==5.4.1
 pytz==2018.9
 selenium==3.141.0
